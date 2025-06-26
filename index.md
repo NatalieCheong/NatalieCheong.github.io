@@ -1,5 +1,3 @@
- "Add homepage content"
-
  ---
 layout: default
 title: Home
