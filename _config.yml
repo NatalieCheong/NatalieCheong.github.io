@@ -1,1 +1,3 @@
- "Add Jekyll theme configuration"
+theme: jekyll-theme-minimal
+title: Natalie Cheong
+description: Welcome to my personal website
