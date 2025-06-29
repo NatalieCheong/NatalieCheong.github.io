@@ -48,22 +48,23 @@
 
         .nav-buttons {
             display: flex;
-            gap: 0.8rem;
+            gap: 0.6rem;
             flex-wrap: nowrap;
         }
 
         .nav-btn {
-            padding: 0.6rem 1rem;
+            padding: 0.5rem 0.8rem;
             background: linear-gradient(45deg, #4a148c, #6a1b9a);
             color: white;
             text-decoration: none;
-            border-radius: 20px;
+            border-radius: 18px;
             font-weight: 500;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             transition: all 0.3s ease;
             border: 2px solid transparent;
             position: relative;
             overflow: hidden;
+            white-space: nowrap;
         }
 
         .nav-btn::before {
@@ -201,6 +202,81 @@
             border: 1px solid rgba(192, 192, 192, 0.3);
         }
 
+        /* Blog Section */
+        .blog-section {
+            margin-top: 4rem;
+        }
+
+        .blog-posts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .blog-post {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(192, 192, 192, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-post::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #4a148c, #c0c0c0, #4a148c);
+        }
+
+        .blog-post:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(74, 20, 140, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .blog-post h4 {
+            color: #c0c0c0;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .blog-date {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .blog-excerpt {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .blog-link {
+            color: #c0c0c0;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .blog-link:hover {
+            color: #ffffff;
+        }
+
+        .coming-soon {
+            text-align: center;
+            padding: 3rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-style: italic;
+        }
+
         /* Footer */
         .footer {
             margin-top: 4rem;
@@ -220,6 +296,12 @@
             .nav-buttons {
                 flex-wrap: wrap;
                 justify-content: center;
+                gap: 0.5rem;
+            }
+
+            .nav-btn {
+                padding: 0.4rem 0.7rem;
+                font-size: 0.8rem;
             }
 
             .hero-title {
@@ -303,6 +385,7 @@
                 <a href="#home" class="nav-btn">Home</a>
                 <a href="#about" class="nav-btn">About</a>
                 <a href="https://github.com/NatalieCheong?tab=repositories" class="nav-btn" target="_blank">Projects</a>
+                <a href="#blog" class="nav-btn">Blog</a>
                 <a href="https://github.com/NatalieCheong" class="nav-btn" target="_blank">GitHub</a>
                 <a href="https://www.linkedin.com/in/natalie-deepcomtech" class="nav-btn" target="_blank">LinkedIn</a>
                 <a href="#contact" class="nav-btn">Contact</a>
@@ -361,6 +444,38 @@
                 </div>
             </div>
         </div>
+
+        <!-- Blog Section -->
+        <section class="blog-section" id="blog">
+            <div class="card">
+                <h3>📝 Blog & Insights</h3>
+                <p>I share my thoughts on AI/ML developments, technical tutorials, and insights from my projects. Stay tuned for articles about deep learning, computer vision, and the latest in artificial intelligence.</p>
+                
+                <div class="blog-posts">
+                    <!-- Example blog post structure - you can add real posts here when you have them -->
+                    <div class="coming-soon">
+                        <h4>🚀 Coming Soon!</h4>
+                        <p>I'm preparing exciting content about:</p>
+                        <ul style="list-style: none; padding: 0; margin-top: 1rem;">
+                            <li>🧠 Deep Learning Best Practices</li>
+                            <li>🏥 Medical AI Case Studies</li>
+                            <li>🐍 Python Tips for ML Engineers</li>
+                            <li>🔬 Research Paper Breakdowns</li>
+                            <li>🛠️ AI Tool Reviews</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Template for future blog posts - uncomment when you have real content
+                    <div class="blog-post">
+                        <h4>Your Blog Post Title</h4>
+                        <div class="blog-date">December 30, 2024</div>
+                        <p class="blog-excerpt">Brief description of your blog post content...</p>
+                        <a href="#" class="blog-link">Read More →</a>
+                    </div>
+                    -->
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
@@ -369,9 +484,18 @@
     </footer>
 </body>
 </html>
-          
-     
+ 
 
       
+   
 
+
+
+
+
+
+
+
+
+   
           
