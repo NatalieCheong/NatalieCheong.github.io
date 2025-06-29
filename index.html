@@ -1,1 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natalie Cheong - Tech Professional</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f1419 0%, #1a237e 50%, #4a148c 100%);
+            color: #ffffff;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Header Navigation */
+        .header {
+            background: rgba(15, 20, 25, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid #4a148c;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #c0c0c0;
+            text-decoration: none;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: nowrap;
+        }
+
+        .nav-btn {
+            padding: 0.6rem 1rem;
+            background: linear-gradient(45deg, #4a148c, #6a1b9a);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #c0c0c0, #ffffff);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .nav-btn:hover::before {
+            left: 0;
+        }
+
+        .nav-btn:hover {
+            color: #0f1419;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(74, 20, 140, 0.4);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .hero-section {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 3rem 0;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #c0c0c0, #ffffff, #e8e8e8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: #c0c0c0;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(45deg, #c0c0c0, #ffffff);
+            color: #0f1419;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(192, 192, 192, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(192, 192, 192, 0.4);
+            background: linear-gradient(45deg, #ffffff, #f0f0f0);
+        }
+
+        /* Content Sections */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(192, 192, 192, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #4a148c, #c0c0c0, #4a148c);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(74, 20, 140, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .card h3 {
+            color: #c0c0c0;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .card p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(45deg, #4a148c, #6a1b9a);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(192, 192, 192, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 4rem;
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid rgba(192, 192, 192, 0.2);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-buttons {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .container {
+                padding: 2rem 1rem;
+            }
+        }
+
+        /* Animated Background Elements */
+        .bg-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .shape {
+            position: absolute;
+            background: rgba(192, 192, 192, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .shape:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .shape:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="#" class="logo">Natalie Cheong</a>
+            <nav class="nav-buttons">
+                <a href="#home" class="nav-btn">Home</a>
+                <a href="#about" class="nav-btn">About</a>
+                <a href="https://github.com/NatalieCheong?tab=repositories" class="nav-btn" target="_blank">Projects</a>
+                <a href="https://github.com/NatalieCheong" class="nav-btn" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/natalie-deepcomtech" class="nav-btn" target="_blank">LinkedIn</a>
+                <a href="#contact" class="nav-btn">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero-section" id="home">
+            <h1 class="hero-title">Welcome to My Digital Space</h1>
+            <p class="hero-subtitle">AI/ML Specialist | Deep Learning | Innovation Enthusiast</p>
+            <a href="https://github.com/NatalieCheong?tab=repositories" class="cta-button">View My Projects</a>
+        </section>
+
+        <!-- Content Grid -->
+        <div class="content-grid">
+            <div class="card" id="about">
+                <h3>About Me</h3>
+                <p>I'm a passionate Python developer specializing in artificial intelligence and machine learning. My expertise spans across deep learning, computer vision, and large language models (LLMs). I'm constantly exploring cutting-edge AI technologies and recently expanded my skills to include MCP Server development. I love building intelligent systems that solve real-world problems.</p>
+                <div class="skills-container" style="margin-top: 1.5rem;">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Deep Learning</span>
+                    <span class="skill-tag">Machine Learning</span>
+                    <span class="skill-tag">Computer Vision</span>
+                    <span class="skill-tag">LLM</span>
+                    <span class="skill-tag">AI Agents</span>
+                    <span class="skill-tag">MCP Server</span>
+                </div>
+            </div>
+
+            <div class="card" id="projects">
+                <h3>My GitHub Projects</h3>
+                <p>Check out my public repositories showcasing AI/ML projects and Python development. Each project demonstrates different aspects of my expertise:</p>
+                <ul style="margin-top: 1rem; color: rgba(255, 255, 255, 0.8);">
+                    <li>🤖 AI Agent Development - Intelligent automation systems</li>
+                    <li>👁️ Computer Vision Applications - Image recognition & analysis</li>
+                    <li>🧠 Deep Learning Models - Neural network implementations</li>
+                    <li>💬 LLM Integration Projects - Natural language processing</li>
+                    <li>🔧 MCP Server Development - Latest model communication protocol</li>
+                </ul>
+                <div style="margin-top: 1.5rem;">
+                    <a href="https://github.com/NatalieCheong?tab=repositories" style="color: #c0c0c0; text-decoration: none; font-weight: bold;" target="_blank">
+                        👨‍💻 Browse All My Repositories →
+                    </a>
+                </div>
+            </div>
+
+            <div class="card" id="contact">
+                <h3>Get In Touch</h3>
+                <p>I'm always interested in collaborating on AI/ML projects and discussing the latest developments in artificial intelligence. Feel free to reach out for partnerships, consulting, or just to chat about Python and AI!</p>
+                <div style="margin-top: 1.5rem;">
+                    <p style="color: #c0c0c0; margin-bottom: 0.5rem;">💼 <a href="https://github.com/NatalieCheong" style="color: #c0c0c0;" target="_blank">GitHub Portfolio</a></p>
+                    <p style="color: #c0c0c0;">🔗 <a href="https://www.linkedin.com/in/natalie-deepcomtech" style="color: #c0c0c0;" target="_blank">LinkedIn Profile</a></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Natalie Cheong. Built with GitHub Pages.</p>
+    </footer>
+</body>
+</html>
