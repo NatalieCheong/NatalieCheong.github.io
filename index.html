@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Natalie Cheong - Tech Professional</title>
+    <title>Natalie Cheong - AI/ML Specialist</title>
     <style>
         * {
             margin: 0;
@@ -139,6 +139,142 @@
             background: linear-gradient(45deg, #ffffff, #f0f0f0);
         }
 
+        /* Featured Project Section */
+        .featured-project-section {
+            margin-bottom: 4rem;
+        }
+
+        .featured-project-card {
+            background: linear-gradient(135deg, #4a148c 0%, #6a1b9a 100%);
+            border: 2px solid #c0c0c0;
+            border-radius: 15px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .featured-project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #c0c0c0, #ffffff, #c0c0c0);
+        }
+
+        .featured-project-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .featured-project-header h2 {
+            color: #ffffff;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .featured-project-divider {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #c0c0c0, #ffffff);
+            margin: 0 auto;
+        }
+
+        .featured-project-content {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(192, 192, 192, 0.3);
+        }
+
+        .featured-project-title {
+            color: #c0c0c0;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .featured-project-description {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .featured-project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .featured-project-feature h4 {
+            color: #c0c0c0;
+            margin-bottom: 1rem;
+        }
+
+        .featured-project-feature ul {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            padding-left: 1rem;
+        }
+
+        .tech-tags {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .tech-tag {
+            background: rgba(192, 192, 192, 0.2);
+            color: #c0c0c0;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(192, 192, 192, 0.3);
+        }
+
+        .featured-project-links {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .featured-project-links div {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .featured-project-btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .featured-project-btn.primary {
+            background: linear-gradient(45deg, #c0c0c0, #ffffff);
+            color: #0f1419;
+        }
+
+        .featured-project-btn.secondary {
+            background: rgba(192, 192, 192, 0.2);
+            color: #c0c0c0;
+            border: 2px solid rgba(192, 192, 192, 0.3);
+        }
+
+        .featured-project-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(192, 192, 192, 0.3);
+        }
+
         /* Content Sections */
         .content-grid {
             display: grid;
@@ -270,11 +406,25 @@
             color: #ffffff;
         }
 
-        .coming-soon {
+        .blog-view-all {
             text-align: center;
-            padding: 3rem;
-            color: rgba(255, 255, 255, 0.7);
-            font-style: italic;
+            margin-top: 2rem;
+        }
+
+        .blog-view-all a {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(45deg, #c0c0c0, #ffffff);
+            color: #0f1419;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .blog-view-all a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(192, 192, 192, 0.3);
         }
 
         /* Footer */
@@ -314,6 +464,15 @@
 
             .container {
                 padding: 2rem 1rem;
+            }
+
+            .featured-project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-project-links div {
+                flex-direction: column;
+                align-items: center;
             }
         }
 
@@ -384,6 +543,7 @@
             <nav class="nav-buttons">
                 <a href="#home" class="nav-btn">Home</a>
                 <a href="#about" class="nav-btn">About</a>
+                <a href="#featured-project" class="nav-btn">Featured Project</a>
                 <a href="https://github.com/NatalieCheong?tab=repositories" class="nav-btn" target="_blank">Projects</a>
                 <a href="#blog" class="nav-btn">Blog</a>
                 <a href="https://github.com/NatalieCheong" class="nav-btn" target="_blank">GitHub</a>
@@ -398,23 +558,107 @@
         <!-- Hero Section -->
         <section class="hero-section" id="home">
             <h1 class="hero-title">Welcome to My Digital Space</h1>
-            <p class="hero-subtitle">AI/ML Specialist | Deep Learning | Innovation Enthusiast</p>
-            <a href="https://github.com/NatalieCheong?tab=repositories" class="cta-button">View My Projects</a>
+            <p class="hero-subtitle">AI/ML Specialist | Multi-Agent Systems | MCP Protocol Expert</p>
+            <a href="#featured-project" class="cta-button">View Featured Project</a>
+        </section>
+
+        <!-- Featured Project Section -->
+        <section class="featured-project-section" id="featured-project">
+            <div class="featured-project-card">
+                <div class="featured-project-header">
+                    <h2>🌟 Featured Project</h2>
+                    <div class="featured-project-divider"></div>
+                </div>
+                
+                <div class="featured-project-content">
+                    <h3 class="featured-project-title">
+                        🎬 Multi-Agent Entertainment Intelligence Platform
+                    </h3>
+                    
+                    <p class="featured-project-description">
+                        A cutting-edge Multi-Agent AI system integrated with the Model Context Protocol (MCP) for comprehensive entertainment industry analysis. This platform demonstrates advanced concepts in distributed AI systems, protocol standardization, and AI safety.
+                    </p>
+                    
+                    <div class="featured-project-grid">
+                        <div class="featured-project-feature">
+                            <h4>🤖 Multi-Agent System</h4>
+                            <ul>
+                                <li>5 Specialized AI Agents</li>
+                                <li>Intelligent Agent Orchestration</li>
+                                <li>Context-Aware Communication</li>
+                                <li>Enterprise-Ready Architecture</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="featured-project-feature">
+                            <h4>🔗 MCP Protocol Integration</h4>
+                            <ul>
+                                <li>Standards-Compliant Implementation</li>
+                                <li>Claude Desktop Integration</li>
+                                <li>Real-time Communication</li>
+                                <li>Tool-based Architecture</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="featured-project-feature">
+                            <h4>🔒 Advanced Safety</h4>
+                            <ul>
+                                <li>Content Safety Filtering</li>
+                                <li>Bias Detection Systems</li>
+                                <li>Quality Assurance</li>
+                                <li>Cultural Sensitivity Analysis</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="featured-project-feature">
+                            <h4>📊 Data Intelligence</h4>
+                            <ul>
+                                <li>Multi-Source Integration</li>
+                                <li>Netflix & TMDB Data</li>
+                                <li>Business Intelligence</li>
+                                <li>Real-time Analytics</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python 3.9+</span>
+                        <span class="tech-tag">MCP Protocol</span>
+                        <span class="tech-tag">Multi-Agent AI</span>
+                        <span class="tech-tag">OpenAI GPT-4</span>
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">Docker</span>
+                    </div>
+                    
+                    <div class="featured-project-links">
+                        <div>
+                            <a href="https://github.com/NatalieCheong/Multi-Agent-Entertainment-Intelligence-Platform" target="_blank" class="featured-project-btn primary">
+                                🔗 View on GitHub
+                            </a>
+                            <a href="blog/my-journey-building-multi-agent-entertainment-platform.html" class="featured-project-btn secondary">
+                                📖 Read Development Story
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- Content Grid -->
         <div class="content-grid">
             <div class="card" id="about">
                 <h3>About Me</h3>
-                <p>I'm a passionate Python developer specializing in artificial intelligence and machine learning. My expertise spans across deep learning, computer vision, and large language models (LLMs). I'm constantly exploring cutting-edge AI technologies and recently expanded my skills to include MCP Server development. I love building intelligent systems that solve real-world problems.</p>
+                <p>I'm a passionate Python developer specializing in artificial intelligence and machine learning, with a focus on <strong>Multi-Agent Systems</strong> and <strong>MCP Protocol implementation</strong>. My expertise spans across deep learning, computer vision, and large language models (LLMs). I'm constantly exploring cutting-edge AI technologies and recently pioneered work in entertainment intelligence platforms.</p>
+                <p style="margin-top: 1rem;">My recent breakthrough project demonstrates advanced concepts in distributed AI systems, where multiple specialized agents collaborate through standardized protocols to deliver comprehensive business intelligence. I love building intelligent systems that solve real-world problems while maintaining the highest standards of AI safety and ethics.</p>
                 <div class="skills-container" style="margin-top: 1.5rem;">
                     <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Multi-Agent AI</span>
+                    <span class="skill-tag">MCP Protocol</span>
                     <span class="skill-tag">Deep Learning</span>
                     <span class="skill-tag">Machine Learning</span>
                     <span class="skill-tag">Computer Vision</span>
                     <span class="skill-tag">LLM</span>
-                    <span class="skill-tag">AI Agents</span>
-                    <span class="skill-tag">MCP Server</span>
+                    <span class="skill-tag">AI Safety</span>
                 </div>
             </div>
 
@@ -422,6 +666,7 @@
                 <h3>My GitHub Projects</h3>
                 <p>Check out my public repositories showcasing AI/ML projects and Python development. Each project demonstrates different aspects of my expertise:</p>
                 <ul style="margin-top: 1rem; color: rgba(255, 255, 255, 0.8);">
+                    <li>🎬 Multi-Agent Entertainment Intelligence Platform - Advanced AI orchestration</li>
                     <li>🤖 AI Agent Development - Intelligent automation systems</li>
                     <li>👁️ Computer Vision Applications - Image recognition & analysis</li>
                     <li>🧠 Deep Learning Models - Neural network implementations</li>
@@ -437,7 +682,7 @@
 
             <div class="card" id="contact">
                 <h3>Get In Touch</h3>
-                <p>I'm always interested in collaborating on AI/ML projects and discussing the latest developments in artificial intelligence. Feel free to reach out for partnerships, consulting, or just to chat about Python and AI!</p>
+                <p>I'm always interested in collaborating on AI/ML projects, especially those involving Multi-Agent systems and MCP Protocol implementation. Feel free to reach out for partnerships, consulting, or just to discuss the latest developments in artificial intelligence.</p>
                 <div style="margin-top: 1.5rem;">
                     <p style="color: #c0c0c0; margin-bottom: 0.5rem;">💼 <a href="https://github.com/NatalieCheong" style="color: #c0c0c0;" target="_blank">GitHub Portfolio</a></p>
                     <p style="color: #c0c0c0;">🔗 <a href="https://www.linkedin.com/in/natalie-deepcomtech" style="color: #c0c0c0;" target="_blank">LinkedIn Profile</a></p>
@@ -448,31 +693,40 @@
         <!-- Blog Section -->
         <section class="blog-section" id="blog">
             <div class="card">
-                <h3>📝 Blog & Insights</h3>
-                <p>I share my thoughts on AI/ML developments, technical tutorials, and insights from my projects. Stay tuned for articles about deep learning, computer vision, and the latest in artificial intelligence.</p>
+                <h3>📝 Latest Blog Posts</h3>
+                <p>Deep dives into AI/ML developments, Multi-Agent systems, MCP protocol implementation, and insights from my latest projects.</p>
                 
                 <div class="blog-posts">
-                    <!-- Example blog post structure - you can add real posts here when you have them -->
-                    <div class="coming-soon">
-                        <h4>🚀 Coming Soon!</h4>
-                        <p>I'm preparing exciting content about:</p>
-                        <ul style="list-style: none; padding: 0; margin-top: 1rem;">
-                            <li>🧠 Deep Learning Best Practices</li>
-                            <li>🏥 Medical AI Case Studies</li>
-                            <li>🐍 Python Tips for ML Engineers</li>
-                            <li>🔬 Research Paper Breakdowns</li>
-                            <li>🛠️ AI Tool Reviews</li>
-                        </ul>
+                    <div class="blog-post">
+                        <h4>My Journey Building Multi-Agent Entertainment Intelligence Platform</h4>
+                        <div class="blog-date">January 15, 2025</div>
+                        <p class="blog-excerpt">
+                            A comprehensive look at building a cutting-edge Multi-Agent AI system integrated with the Model Context Protocol. From conception to implementation, I share the challenges, breakthroughs, and lessons learned in creating an entertainment intelligence platform that demonstrates the future of distributed AI systems.
+                        </p>
+                        <a href="blog/my-journey-building-multi-agent-entertainment-platform.html" class="blog-link">Read Full Article →</a>
                     </div>
                     
-                    <!-- Template for future blog posts - uncomment when you have real content
                     <div class="blog-post">
-                        <h4>Your Blog Post Title</h4>
-                        <div class="blog-date">December 30, 2024</div>
-                        <p class="blog-excerpt">Brief description of your blog post content...</p>
-                        <a href="#" class="blog-link">Read More →</a>
+                        <h4>MCP Protocol Implementation: A Technical Deep Dive</h4>
+                        <div class="blog-date">Coming Soon</div>
+                        <p class="blog-excerpt">
+                            An in-depth technical guide to implementing the Model Context Protocol (MCP) for AI service orchestration. Learn about standards-compliant implementation, tool-based architecture, and real-time communication patterns that enable seamless integration between AI models and external systems.
+                        </p>
+                        <a href="blog/mcp-protocol-implementation-guide.html" class="blog-link">Read Full Article →</a>
                     </div>
-                    -->
+                    
+                    <div class="blog-post">
+                        <h4>Designing Multi-Agent Systems: Architecture Patterns and Best Practices</h4>
+                        <div class="blog-date">Coming Soon</div>
+                        <p class="blog-excerpt">
+                            Explore the architectural patterns and best practices for building scalable Multi-Agent systems. From agent orchestration to context-aware communication, learn how to design systems that can handle complex real-world scenarios while maintaining reliability and performance.
+                        </p>
+                        <a href="blog/multi-agent-systems-architecture.html" class="blog-link">Read Full Article →</a>
+                    </div>
+                </div>
+                
+                <div class="blog-view-all">
+                    <a href="blog/index.html">📚 View All Blog Posts</a>
                 </div>
             </div>
         </section>
@@ -484,18 +738,7 @@
     </footer>
 </body>
 </html>
- 
-
-      
-   
+     
 
 
-
-
-
-
-
-
-
-   
-          
+     
