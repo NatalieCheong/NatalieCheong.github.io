@@ -165,10 +165,10 @@ I'm always interested in:
 - **Technical Writing** - Sharing knowledge and insights
 - **Speaking Opportunities** - Conferences and meetups
 
-## 📜 **License**
+## Copyright & License
 
-This website is open source and available under the [MIT License](LICENSE).
+© 2025 Natalie Cheong. All rights reserved.
 
----
+This portfolio website and its source code are for viewing and demonstration purposes only. No part of this code may be reproduced, distributed, or used without explicit written permission from the author.
 
-*This repository demonstrates modern web development skills combined with cutting-edge AI/ML expertise, showcasing a professional online presence for technical leadership in Multi-Agent AI systems and MCP protocol implementation.*
+For inquiries about using this code, please contact me through my GitHub profile.
