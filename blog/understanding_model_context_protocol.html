@@ -465,10 +465,25 @@
                   Server executes tools or fetches resources
                 </text>
                 
-                <text x="70" y="610" font-family="Arial, sans-serif"
+                <text x="70" y="610" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#4a5568">
+                  4. Response:
+                </text>
+                <text x="150" y="610" font-family="Arial, sans-serif" font-size="12" fill="#4a5568">
+                  Server returns structured data to client
+                </text>
+                
+                <text x="70" y="630" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#4a5568">
+                  5. Integration:
+                </text>
+                <text x="165" y="630" font-family="Arial, sans-serif" font-size="12" fill="#4a5568">
+                  Client integrates data into AI context/response
+                </text>
+              </g>
+            </svg>
+        </div>
 
+        <p>The architectural diagram above illustrates how MCP creates a standardized communication layer between AI clients and external data sources. The MCP Client, which can be Claude or other AI assistants, communicates with MCP Servers through JSON-RPC protocol over various transport mechanisms including standard input/output, Server-Sent Events, or WebSockets.</p>
                     
-        
         <p>This architecture establishes three fundamental capabilities that distinguish MCP from traditional AI approaches. Tools represent executable functions that AI agents can invoke to perform specific actions, Resources provide access to readable data sources ranging from databases to file systems, and Prompts offer structured templates that guide AI behavior in specific contexts.</p>
         
         <p>The security model inherent in this architecture ensures that AI systems operate within controlled environments while maintaining access to necessary external resources. Each MCP Server acts as a secure gateway, managing permissions and access controls while providing the AI client with structured, reliable data access patterns.</p>
