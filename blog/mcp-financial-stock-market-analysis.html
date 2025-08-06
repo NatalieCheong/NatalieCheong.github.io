@@ -279,7 +279,7 @@
         <div class="feature-grid">
             <div class="feature-card">
                 <h4><span class="emoji">🔧</span>Tools Component</h4>
-                <p>Tools in MCP represent executable functions that AI models can invoke to perform specific actions. In our financial context, these include functions for fetching real-time stock data, calculating financial metrics, retrieving historical market information, and generating comparative analyses. Each tool is defined with strict input validation and clear output specifications.</p>
+                <p>Tools in MCP represent executable functions that AI models can invoke to perform specific actions. In this financial context, these include functions for fetching real-time stock data, calculating financial metrics, retrieving historical market information, and generating comparative analyses. Each tool is defined with strict input validation and clear output specifications.</p>
             </div>
             <div class="feature-card">
                 <h4><span class="emoji">📊</span>Resources Component</h4>
@@ -295,9 +295,9 @@
         
         <p>This project was conceived to address several critical challenges in financial AI development while demonstrating best practices for building production-ready systems. The primary objective is to create a financial AI assistant that not only provides valuable market insights but does so within a framework that prioritizes safety, compliance, and user trust.</p>
         
-        <p>The system's <strong>real-time stock analysis</strong> capability leverages live market data feeds to provide instant insights into stock performance, technical indicators, and fundamental metrics. Unlike static financial tools, our AI assistant can process and interpret market movements as they happen, offering users timely analysis that reflects current market conditions. This real-time capability is essential in today's fast-moving markets where information quickly becomes outdated.</p>
+        <p>The system's <strong>real-time stock analysis</strong> capability leverages live market data feeds to provide instant insights into stock performance, technical indicators, and fundamental metrics. Unlike static financial tools, this AI assistant can process and interpret market movements as they happen, offering users timely analysis that reflects current market conditions. This real-time capability is essential in today's fast-moving markets where information quickly becomes outdated.</p>
         
-        <p>Our <strong>portfolio comparison functionality</strong> enables users to analyze multiple securities simultaneously across various financial dimensions. The system can compare stocks based on valuation metrics, growth rates, risk profiles, sector performance, and historical returns. This comparative analysis helps users understand relative positioning and identify potential investment opportunities or portfolio optimization strategies.</p>
+        <p>The <strong>portfolio comparison functionality</strong> enables users to analyze multiple securities simultaneously across various financial dimensions. The system can compare stocks based on valuation metrics, growth rates, risk profiles, sector performance, and historical returns. This comparative analysis helps users understand relative positioning and identify potential investment opportunities or portfolio optimization strategies.</p>
         
         <p>The <strong>market intelligence</strong> component provides broader market context by monitoring major indices, tracking market sentiment indicators, and analyzing macroeconomic factors that influence market movements. This holistic view helps users understand how individual securities fit within broader market trends and economic cycles.</p>
         
@@ -319,7 +319,6 @@
             <span class="tech-tag">Anthropic Claude</span>
             <span class="tech-tag">pandas</span>
             <span class="tech-tag">Guardrails AI</span>
-            <span class="tech-tag">asyncio</span>
         </div>
         
         <p><strong>Python</strong> serves as the primary development language due to its extensive ecosystem of financial libraries, robust data processing capabilities, and excellent AI/ML integration. The language's readability and rapid development cycles make it ideal for prototyping and iterating on financial algorithms while maintaining production-quality code standards.</p>
@@ -339,14 +338,14 @@
             <p>The financial AI assistant implements a multi-layered security framework designed to ensure safe, compliant, and responsible AI interactions in financial contexts. This system goes beyond basic content filtering to provide comprehensive protection against various risks inherent in financial AI applications.</p>
         </div>
 
-        <p>Financial AI systems operate in a highly regulated environment where mistakes can have serious legal and financial consequences. Our guardrails system addresses these challenges through a comprehensive approach that combines proactive risk prevention, real-time monitoring, and reactive protection measures.</p>
+        <p>Financial AI systems operate in a highly regulated environment where mistakes can have serious legal and financial consequences. This guardrails system addresses these challenges through a comprehensive approach that combines proactive risk prevention, real-time monitoring, and reactive protection measures.</p>
 
         <div class="security-features">
             <h3><span class="emoji">🔒</span>Multi-Layer Security Implementation</h3>
             
-            <p>The <strong>Investment Advice Protection</strong> system represents one of our most critical security measures. Using advanced natural language processing and pattern recognition, the system automatically detects and blocks any requests that could be construed as seeking investment advice. This protection operates at multiple levels, from keyword detection to semantic analysis, ensuring that the AI never provides recommendations that could constitute unlicensed financial advice. When such requests are detected, users are immediately redirected to consult with licensed financial professionals.</p>
+            <p>The <strong>Investment Advice Protection</strong> system represents one of the most critical security measures. Using advanced natural language processing and pattern recognition, the system automatically detects and blocks any requests that could be construed as seeking investment advice. This protection operates at multiple levels, from keyword detection to semantic analysis, ensuring that the AI never provides recommendations that could constitute unlicensed financial advice. When such requests are detected, users are immediately redirected to consult with licensed financial professionals.</p>
             
-            <p>Our <strong>Rate Limiting Infrastructure</strong> prevents system abuse while ensuring legitimate users have consistent access to services. The multi-tiered approach implements 15 calls per minute for burst usage, 200 calls per hour for sustained analysis, and 2,000 calls per day for comprehensive research activities. These limits are dynamically adjusted based on user behavior patterns and system load, ensuring optimal resource allocation while preventing malicious exploitation.</p>
+            <p>The <strong>Rate Limiting Infrastructure</strong> prevents system abuse while ensuring legitimate users have consistent access to services. The multi-tiered approach implements 15 calls per minute for burst usage, 200 calls per hour for sustained analysis, and 2,000 calls per day for comprehensive research activities. These limits are dynamically adjusted based on user behavior patterns and system load, ensuring optimal resource allocation while preventing malicious exploitation.</p>
             
             <p>The <strong>Input Validation System</strong> provides comprehensive sanitization and validation of all user inputs, stock symbols, parameters, and queries. This system prevents injection attacks, validates financial instrument symbols against known databases, and ensures that all parameters fall within acceptable ranges. Special attention is paid to financial symbols and identifiers, with real-time validation against major exchange listings.</p>
             
@@ -384,7 +383,7 @@
         <div class="feature-grid">
             <div class="feature-card">
                 <h4><span class="emoji">🖥️</span>Financial Server Architecture</h4>
-                <p>The Financial Server (financial_server.py) serves as the core data processing engine, implementing four specialized financial analysis tools that handle everything from basic stock information retrieval to complex multi-stock comparisons. The server manages resource allocation for saved analyses and historical data, provides templated prompts for standardized analysis procedures, and maintains seamless integration with the yfinance API for real-time market data access. The server architecture is designed for high availability and can handle multiple concurrent requests while maintaining data consistency and accuracy.</p>
+                <p>The Financial Server serves as the core data processing engine, implementing four specialized financial analysis tools that handle everything from basic stock information retrieval to complex multi-stock comparisons. The server manages resource allocation for saved analyses and historical data, provides templated prompts for standardized analysis procedures, and maintains seamless integration with the yfinance API for real-time market data access. The server architecture is designed for high availability and can handle multiple concurrent requests while maintaining data consistency and accuracy.</p>
             </div>
             <div class="feature-card">
                 <h4><span class="emoji">💬</span>Enhanced Chat Client System</h4>
@@ -404,40 +403,18 @@
         <p>The stock information system provides comprehensive fundamental and technical analysis data for any publicly traded security. Users can retrieve current market prices, historical performance data, financial ratios, company fundamentals, sector classifications, and comparative metrics. The system processes this information through advanced analytical algorithms to provide context-aware insights that help users understand not just what the data shows, but what it means in the broader market context.</p>
 
         <div class="code-block">
-# Comprehensive stock data retrieval with intelligent analysis
-get_stock_info("AAPL")              # Complete fundamental analysis
-get_historical_data("TSLA", period="1y", interval="1d")  # Technical analysis data
-compare_stocks(["AAPL", "GOOGL", "MSFT"], metric="market_cap")  # Comparative analysis
-get_market_summary()                # Broader market context
         </div>
 
         <h3>Interactive Command Interface</h3>
         <p>The command interface provides power users with direct access to system resources and advanced analytical capabilities. Resource access commands enable users to examine saved portfolios, review historical analyses, and access detailed financial reports. Prompt execution capabilities allow users to run sophisticated analytical templates with customized parameters, enabling repeatable and standardized analysis procedures.</p>
 
         <div class="code-block">
-# Resource management and analysis commands
-@portfolios                         # Access comprehensive portfolio database
-@AAPL_detailed_analysis.json       # View specific analytical reports
-
-# Advanced prompt execution for standardized analysis
-/prompts                           # Browse available analytical templates
-/prompt analyze_stock_prompt symbol=NVDA timeframe=1y
-
-# System monitoring and optimization
-/status                           # Real-time system performance metrics
         </div>
 
         <h3>Comprehensive Safety and Validation Framework</h3>
         <p>The safety framework operates continuously to ensure that all interactions remain within appropriate boundaries for financial AI applications. This includes sophisticated natural language processing to detect investment advice requests, comprehensive input validation and sanitization to prevent security vulnerabilities, intelligent rate limiting that adapts to usage patterns, proactive security threat prevention, detailed session tracking with violation logging, and automatic compliance disclaimers that ensure users understand the educational nature of the information provided.</p>
 
         <div class="code-block">
-# Multi-layered protection and compliance framework
-- Advanced investment advice detection using NLP and pattern matching
-- Comprehensive symbol validation with real-time exchange verification  
-- Adaptive rate limiting: 15/minute, 200/hour, 2000/day with burst allowance
-- Proactive security threat prevention with ML-based anomaly detection
-- Detailed session tracking with compliance audit trails
-- Automatic disclaimer injection and regulatory compliance enforcement
         </div>
 
         <h2><span class="emoji">📈</span>Real-World Performance and Testing Results</h2>
@@ -540,77 +517,9 @@ The close competition between these tech giants demonstrates the dynamic nature 
             </div>
         </div>
 
-        <h2><span class="emoji">🚀</span>Installation and Implementation Guide</h2>
-        
-        <p>Setting up the financial AI assistant requires careful attention to dependencies, environment configuration, and security settings. The following comprehensive guide ensures a smooth installation process while maintaining security best practices throughout the setup.</p>
-
-        <div class="code-block">
-# Repository Setup and Environment Preparation
-git clone https://github.com/NatalieCheong/MCP_for_Simple_Financial_Stock_Market
-cd MCP_for_Simple_Financial_Stock_Market
-
-# Create isolated Python environment for dependency management
-uv venv
-source .venv/bin/activate  # On macOS/Linux
-# .venv\Scripts\activate   # On Windows
-
-# Install core dependencies with version pinning for stability
-uv add mcp yfinance anthropic python-dotenv nest-asyncio pandas numpy
-
-# Add security and monitoring libraries for comprehensive protection
-uv add ratelimit validators bleach
-
-# Environment Configuration for Security
-cp .env.example .env
-# Configure your Anthropic API key and other sensitive settings in .env
-
-# Create necessary directories and configuration files
-mkdir -p enhanced_version financial_data
-touch enhanced_version/guardrails_config.json
-
-# Launch the enhanced financial chatbot with comprehensive guardrails
-cd enhanced_version
-uv run enhanced_financial_chatbot.py
-        </div>
-
-        <p>The installation process includes several critical steps for ensuring system security and optimal performance. First, the isolated Python environment prevents dependency conflicts and ensures that the financial AI assistant operates with precisely the required library versions. The security libraries (ratelimit, validators, bleach) provide essential protection against various attack vectors and ensure robust input validation.</p>
-
-        <p>Environment configuration requires careful attention to API key management and security settings. The .env file should contain your Anthropic API key and any other sensitive configuration data, ensuring that credentials are never exposed in code repositories. The guardrails configuration file enables fine-tuning of security parameters to match your specific use case and compliance requirements.</p>
-
         <h2><span class="emoji">🔧</span>Advanced Configuration and Customization</h2>
         
         <p>The guardrails system offers extensive customization options to adapt the financial AI assistant to specific organizational needs, regulatory requirements, and risk tolerance levels. The configuration system uses a hierarchical JSON structure that allows for precise control over every aspect of system behavior.</p>
-
-        <div class="code-block">
-{
-  "rate_limiting": {
-    "max_calls_per_minute": 15,
-    "max_calls_per_hour": 200,
-    "max_calls_per_day": 2000,
-    "min_request_interval_seconds": 1,
-    "burst_allowance": 5
-  },
-  "content_filtering": {
-    "blocked_keywords": [
-      "pump and dump", "insider trading", "market manipulation",
-      "guaranteed returns", "risk-free investment", "get rich quick"
-    ],
-    "high_risk_terms": [
-      "options", "derivatives", "leverage", "margin", "short selling",
-      "penny stocks", "crypto", "forex", "day trading"
-    ],
-    "investment_advice_patterns": [
-      "should\\s+i\\s+buy", "recommend\\s+buying", "investment\\s+advice"
-    ]
-  },
-  "security": {
-    "sanitize_inputs": true,
-    "max_input_length": 2000,
-    "timeout_seconds": 45,
-    "log_violations": true
-  }
-}
-        </div>
 
         <p>The rate limiting configuration balances system protection with user accessibility. The multi-tier approach (minute/hour/day limits) prevents both accidental overuse and malicious abuse while accommodating legitimate research workflows. The burst allowance feature enables users to perform intensive analysis sessions while maintaining overall rate control.</p>
 
@@ -662,7 +571,7 @@ uv run enhanced_financial_chatbot.py
 
         <div class="cta-section">
             <h2><span class="emoji">🎯</span>Explore the Complete Implementation</h2>
-            <p>Ready to build your own enterprise-grade financial AI assistant? Access the complete source code, comprehensive documentation, detailed guardrails implementation, and step-by-step deployment guides in the project repository.</p>
+            <p>Access the complete source code, comprehensive documentation, detailed guardrails implementation, and step-by-step deployment guides in the project repository.</p>
             <a href="https://github.com/NatalieCheong/MCP_for_Simple_Financial_Stock_Market" class="cta-button">
                 <span class="emoji">📂</span>Access GitHub Repository
             </a>
