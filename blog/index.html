@@ -13,10 +13,10 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.8;
+            color: #333333;
+            background: #F5F7FA;
             min-height: 100vh;
         }
 
@@ -29,19 +29,25 @@
         header {
             text-align: center;
             padding: 40px 0;
-            color: white;
+            background: linear-gradient(135deg, #001F54, #002B5B);
+            color: #FFD700;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 31, 84, 0.4);
+            margin-bottom: 30px;
         }
 
         header h1 {
             font-size: 3rem;
             margin-bottom: 10px;
             font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
         }
 
         header p {
             font-size: 1.2rem;
-            opacity: 0.9;
+            opacity: 0.95;
             margin-bottom: 20px;
+            color: #FFFFFF;
         }
 
         .nav-links {
@@ -49,41 +55,43 @@
         }
 
         .nav-links a {
-            color: white;
+            color: #FFFFFF;
             text-decoration: none;
             margin: 0 15px;
             opacity: 0.9;
-            transition: opacity 0.3s ease;
+            transition: all 0.3s ease;
+            font-weight: bold;
         }
 
         .nav-links a:hover {
             opacity: 1;
             text-decoration: underline;
+            color: #FFD700;
         }
 
         .content {
-            background: white;
+            background: #FFFFFF;
             border-radius: 20px;
             padding: 40px;
-            margin-top: -20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-top: 20px;
+            box-shadow: 0 10px 30px rgba(0, 31, 84, 0.2);
         }
 
         .blog-header {
             text-align: center;
             margin-bottom: 40px;
             padding-bottom: 20px;
-            border-bottom: 2px solid #f0f0f0;
+            border-bottom: 2px solid #FFD700;
         }
 
         .blog-header h2 {
             font-size: 2.5rem;
-            color: #667eea;
+            color: #001F54;
             margin-bottom: 10px;
         }
 
         .blog-header p {
-            color: #666;
+            color: #333333;
             font-size: 1.1rem;
         }
 
@@ -93,32 +101,34 @@
         }
 
         .blog-post {
-            background: #f8f9fa;
+            background: linear-gradient(135deg, rgba(0, 31, 84, 0.05), rgba(255, 215, 0, 0.1));
             border-radius: 15px;
             padding: 30px;
-            border-left: 5px solid #667eea;
+            border-left: 5px solid #FFD700;
             transition: all 0.3s ease;
+            border: 1px solid rgba(255, 215, 0, 0.3);
         }
 
         .blog-post:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 25px rgba(0, 31, 84, 0.2);
         }
 
         .blog-post h3 {
-            color: #667eea;
+            color: #001F54;
             font-size: 1.5rem;
             margin-bottom: 10px;
             line-height: 1.3;
         }
 
         .blog-post h3 a {
-            color: #667eea;
+            color: #001F54;
             text-decoration: none;
         }
 
         .blog-post h3 a:hover {
             text-decoration: underline;
+            color: #002B5B;
         }
 
         .blog-meta {
@@ -126,11 +136,11 @@
             gap: 15px;
             margin-bottom: 15px;
             font-size: 0.9rem;
-            color: #666;
+            color: #333333;
         }
 
         .blog-date {
-            color: #667eea;
+            color: #FFD700;
             font-weight: bold;
         }
 
@@ -142,46 +152,54 @@
         }
 
         .blog-tag {
-            background: #667eea;
-            color: white;
+            background: rgba(0, 31, 84, 0.1);
+            color: #001F54;
             padding: 4px 10px;
             border-radius: 15px;
             font-size: 0.8rem;
             font-weight: bold;
+            border: 1px solid #FFD700;
         }
 
         .blog-excerpt {
-            color: #555;
+            color: #333333;
             margin-bottom: 20px;
             line-height: 1.6;
         }
 
         .blog-link {
             display: inline-block;
-            color: #667eea;
+            color: #001F54;
             text-decoration: none;
             font-weight: bold;
             padding: 8px 16px;
-            border: 2px solid #667eea;
+            border: 2px solid #FFD700;
             border-radius: 25px;
             transition: all 0.3s ease;
+            background: rgba(255, 215, 0, 0.1);
         }
 
         .blog-link:hover {
-            background: #667eea;
-            color: white;
+            background: #FFD700;
+            color: #001F54;
             transform: translateX(5px);
         }
 
         .coming-soon {
             opacity: 0.7;
-            border-left-color: #ccc;
+            border-left-color: #002B5B;
+            background: linear-gradient(135deg, rgba(0, 31, 84, 0.02), rgba(255, 215, 0, 0.05));
         }
 
         .coming-soon .blog-link {
-            color: #999;
-            border-color: #ccc;
+            color: #002B5B;
+            border-color: #002B5B;
             cursor: not-allowed;
+            background: rgba(0, 43, 91, 0.1);
+        }
+
+        .coming-soon .blog-link:hover {
+            transform: none;
         }
 
         .back-to-home {
@@ -192,8 +210,8 @@
         .back-to-home a {
             display: inline-block;
             padding: 12px 24px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
+            background: linear-gradient(135deg, #001F54, #002B5B);
+            color: #FFD700;
             text-decoration: none;
             border-radius: 25px;
             font-weight: bold;
@@ -202,20 +220,22 @@
 
         .back-to-home a:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 8px 20px rgba(0, 31, 84, 0.4);
         }
 
         .stats {
             text-align: center;
             margin-bottom: 30px;
             padding: 20px;
-            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+            background: linear-gradient(135deg, rgba(0, 31, 84, 0.05), rgba(255, 215, 0, 0.1));
             border-radius: 15px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
         }
 
         .stats h3 {
-            color: #667eea;
+            color: #001F54;
             margin-bottom: 10px;
+            font-size: 1.5rem;
         }
 
         .stats-grid {
@@ -232,11 +252,11 @@
         .stat-number {
             font-size: 2rem;
             font-weight: bold;
-            color: #667eea;
+            color: #FFD700;
         }
 
         .stat-label {
-            color: #666;
+            color: #333333;
             font-size: 0.9rem;
         }
 
@@ -472,7 +492,7 @@
                     <div class="blog-meta">
                         <span class="blog-date">📅 Coming Soon</span>
                         <span>⏱️ ~10 min read</span>
-                        <span class="🏷️ Performance</span>
+                        <span class="🏷️ Performance">
                     </div>
                     <div class="blog-tags">
                         <span class="blog-tag">Performance</span>
@@ -494,8 +514,3 @@
     </div>
 </body>
 </html>
-           
-
- 
-
-       
