@@ -351,6 +351,31 @@
             </div>
         </div>
 
+        <h2><span class="emoji">🔌</span>MCP Transport Mechanisms: Understanding Communication Layers</h2>
+        
+        <p>Model Context Protocol supports multiple transport mechanisms that define how MCP clients and servers communicate with each other. Each transport method offers distinct characteristics suited for different deployment scenarios and security requirements.</p>
+        
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h4><span class="emoji">💻</span>stdio Transport</h4>
+                <p>Standard input/output transport enables direct process-to-process communication through stdin and stdout streams. This method provides the highest security by keeping all communication local to the host machine, with no network exposure. The stdio transport is ideal for applications requiring maximum privacy and security, as data never traverses network boundaries. It offers excellent performance for local operations with minimal latency and overhead.</p>
+            </div>
+            <div class="feature-card">
+                <h4><span class="emoji">🌐</span>HTTP Transport</h4>
+                <p>HTTP-based transport enables MCP servers to operate as traditional web services, accessible via standard HTTP requests and responses. This approach facilitates remote deployment scenarios where MCP servers need to be accessed from multiple clients across network boundaries. HTTP transport supports standard web infrastructure including load balancers, reverse proxies, and authentication mechanisms.</p>
+            </div>
+            <div class="feature-card">
+                <h4><span class="emoji">📡</span>Server-Sent Events (SSE) Transport</h4>
+                <p>SSE transport combines HTTP infrastructure with real-time streaming capabilities, enabling servers to push updates and maintain persistent connections with clients. This method is particularly valuable for applications requiring live data feeds, real-time notifications, or continuous data synchronization between clients and servers.</p>
+            </div>
+        </div>
+        
+        <div class="highlight-box">
+            <p><strong>🔒 This Project's Transport Choice:</strong> This financial MCP project utilizes <strong>stdio transport</strong> for all client-server communications. This design decision prioritizes data security and privacy by ensuring that all financial data processing and AI interactions remain entirely local to the user's device. The stdio implementation eliminates network-based attack vectors while providing optimal performance for financial analysis workflows that require secure, private data handling.</p>
+        </div>
+        
+        <p>The choice of transport mechanism represents a fundamental architectural decision that impacts security posture, deployment flexibility, and operational characteristics. Each transport method serves specific use cases within the broader MCP ecosystem, allowing developers to select the most appropriate communication layer for their particular requirements and constraints.</p>
+
         <h2><span class="emoji">🎯</span>Project Objectives and Scope</h2>
         
         <p>This project was conceived to address several critical challenges in financial AI development while demonstrating best practices for building production-ready systems. The primary objective is to create a financial AI assistant that not only provides valuable market insights but does so within a framework that prioritizes safety, compliance, and user trust.</p>
