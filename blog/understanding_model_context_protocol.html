@@ -487,18 +487,425 @@
         <p>This architecture establishes three fundamental capabilities that distinguish MCP from traditional AI approaches. Tools represent executable functions that AI agents can invoke to perform specific actions, Resources provide access to readable data sources ranging from databases to file systems, and Prompts offer structured templates that guide AI behavior in specific contexts.</p>
         
         <p>The security model inherent in this architecture ensures that AI systems operate within controlled environments while maintaining access to necessary external resources. Each MCP Server acts as a secure gateway, managing permissions and access controls while providing the AI client with structured, reliable data access patterns.</p>
+
+        <h2>MCP Server Architecture: The Heart of Context Management</h2>
         
-        <h2>Core Capabilities and Technical Innovation</h2>
+        <p>MCP servers represent the foundational infrastructure that enables intelligent context management within AI systems. These servers act as specialized gateways that bridge the gap between AI clients and external data sources, tools, and services. Unlike traditional API endpoints that provide simple request-response interactions, MCP servers maintain stateful connections that enable persistent context awareness and intelligent resource coordination.</p>
         
-        <p>The Model Context Protocol introduces several technical innovations that address longstanding challenges in AI system design. Traditional AI models operate in isolation, processing individual requests without maintaining state or understanding broader context. MCP transforms this paradigm by introducing persistent context management that enables AI systems to maintain awareness across interactions, tasks, and time periods.</p>
+        <p>The server architecture operates on three distinct transport mechanisms, each designed for specific deployment scenarios and security requirements. The stdio transport provides the highest security by enabling direct process-to-process communication through standard input and output streams, ensuring that all interactions remain entirely local to the host system without any network exposure. This approach offers exceptional performance for local operations while maintaining absolute data privacy and security.</p>
         
-        <p>Task awareness represents another crucial innovation within the MCP framework. Rather than treating each interaction as an independent event, the protocol enables AI systems to understand their position within larger workflows, recognize dependencies between tasks, and make decisions based on comprehensive understanding of ongoing processes. This capability transforms AI from reactive responders into proactive collaborators.</p>
+        <p>Server-Sent Events transport extends MCP capabilities to web-based environments, enabling real-time streaming connections between browsers and MCP servers. This mechanism supports live data feeds, continuous updates, and persistent connections that maintain context across extended interaction sessions. The SSE approach proves particularly valuable for dashboard applications, monitoring systems, and collaborative environments where multiple users need access to shared contextual information.</p>
         
-        <p>Tool routing functionality provides dynamic resource allocation and task delegation capabilities. The protocol maintains awareness of available tools, agent capabilities, and current system state to make intelligent decisions about how to accomplish complex objectives. This orchestration capability enables sophisticated workflows that adapt to changing conditions and resource availability.</p>
+        <p>HTTP transport provides the most flexible deployment option, enabling MCP servers to operate as traditional web services accessible across network boundaries. This approach supports standard web infrastructure including load balancers, authentication systems, and reverse proxies, making it suitable for enterprise environments where MCP servers need to serve multiple clients across distributed networks.</p>
+        
+        <div class="architecture-section">
+            <h3>MCP Transport Mechanisms Comparison</h3>
+            <svg viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="stdioGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#4facfe;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:1" />
+                </linearGradient>
+                <linearGradient id="sseGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                </linearGradient>
+                <linearGradient id="httpGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#f093fb;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#f5576c;stop-opacity:1" />
+                </linearGradient>
+              </defs>
+              
+              <!-- Background -->
+              <rect width="1000" height="600" fill="#f8fafc"/>
+              
+              <!-- Title -->
+              <text x="500" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#2d3748">
+                MCP Transport Mechanisms
+              </text>
+              
+              <!-- stdio Transport -->
+              <g id="stdio">
+                <rect x="50" y="80" width="280" height="150" rx="15" fill="url(#stdioGradient)" stroke="#00B5D8" stroke-width="2"/>
+                <text x="190" y="110" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white">
+                  stdio Transport
+                </text>
+                <text x="70" y="135" font-family="Arial, sans-serif" font-size="12" fill="white">
+                  ✓ Maximum Security (Local Only)
+                </text>
+                <text x="70" y="155" font-family="Arial, sans-serif" font-size="12" fill="white">
+                  ✓ Zero Network Exposure
+                </text>
+                <text x="70" y="175" font-family="Arial, sans-serif" font-size="12" fill="white">
+                  ✓ Optimal Performance
+                </text>
+                <text x="70" y="195" font-family="Arial, sans-serif" font-size="12" fill="white">
+                  ✓ Direct Process Communication
+                </text>
+                <text x="70" y="215" font-family="Arial, sans-serif" font-size="12" fill="white">
+                  • Use Case: Financial, Healthcare, Sensitive Data
+                </text>
+              </g>
+              
+              <!-- SSE Transport -->
+              <g id="sse">
+                <rect x="360" y="80" width="280" height="150" rx="15" fill="url(#sseGradient)" stroke="#4A90E2" stroke-width="2"/>
+                <text x="500" y="110" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white">
+                  Server-Sent Events
+                </text>
+                <text x="380" y="135" font-family="Arial, sans-serif" font-size="12" fill="white">
+                  ✓ Real-time Streaming
+                </text>
+                <text x="380" y="155" font-family="Arial, sans-serif" font-size="12" fill="white">
+                  ✓ Browser Compatible
+                </text>
+                <text x="380" y="175" font-family="Arial, sans-serif" font-size="12" fill="white">
+                  ✓ Persistent Connections
+                </text>
+                <text x="380" y="195" font-family="Arial, sans-serif" font-size="12" fill="white">
+                  ✓ Live Data Feeds
+                </text>
+                <text x="380" y="215" font-family="Arial, sans-serif" font-size="12" fill="white">
+                  • Use Case: Dashboards, Monitoring, Collaboration
+                </text>
+              </g>
+              
+              <!-- HTTP Transport -->
+              <g id="http">
+                <rect x="670" y="80" width="280" height="150" rx="15" fill="url(#httpGradient)" stroke="#E53E3E" stroke-width="2"/>
+                <text x="810" y="110" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white">
+                  HTTP Transport
+                </text>
+                <text x="690" y="135" font-family="Arial, sans-serif" font-size="12" fill="white">
+                  ✓ Network Accessible
+                </text>
+                <text x="690" y="155" font-family="Arial, sans-serif" font-size="12" fill="white">
+                  ✓ Standard Web Infrastructure
+                </text>
+                <text x="690" y="175" font-family="Arial, sans-serif" font-size="12" fill="white">
+                  ✓ Load Balancing Support
+                </text>
+                <text x="690" y="195" font-family="Arial, sans-serif" font-size="12" fill="white">
+                  ✓ Authentication Integration
+                </text>
+                <text x="690" y="215" font-family="Arial, sans-serif" font-size="12" fill="white">
+                  • Use Case: Enterprise, Multi-tenant, Cloud
+                </text>
+              </g>
+              
+              <!-- Comparison Matrix -->
+              <g id="comparison">
+                <rect x="50" y="270" width="900" height="280" rx="15" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+                <text x="500" y="300" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#2d3748">
+                  Transport Comparison Matrix
+                </text>
+                
+                <!-- Headers -->
+                <text x="150" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#4a5568">
+                  Feature
+                </text>
+                <text x="300" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#4a5568">
+                  stdio
+                </text>
+                <text x="500" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#4a5568">
+                  SSE
+                </text>
+                <text x="700" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#4a5568">
+                  HTTP
+                </text>
+                
+                <!-- Security Row -->
+                <text x="150" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#4a5568">
+                  Security Level
+                </text>
+                <text x="300" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#38a169">
+                  Maximum
+                </text>
+                <text x="500" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#d69e2e">
+                  High
+                </text>
+                <text x="700" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#e53e3e">
+                  Configurable
+                </text>
+                
+                <!-- Network Row -->
+                <text x="150" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#4a5568">
+                  Network Access
+                </text>
+                <text x="300" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#4a5568">
+                  Local Only
+                </text>
+                <text x="500" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#4a5568">
+                  Web Browser
+                </text>
+                <text x="700" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#4a5568">
+                  Full Network
+                </text>
+                
+                <!-- Performance Row -->
+                <text x="150" y="420" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#4a5568">
+                  Performance
+                </text>
+                <text x="300" y="420" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#38a169">
+                  Optimal
+                </text>
+                <text x="500" y="420" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#38a169">
+                  High
+                </text>
+                <text x="700" y="420" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#d69e2e">
+                  Good
+                </text>
+                
+                <!-- Scalability Row -->
+                <text x="150" y="450" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#4a5568">
+                  Scalability
+                </text>
+                <text x="300" y="450" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#d69e2e">
+                  Single Process
+                </text>
+                <text x="500" y="450" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#d69e2e">
+                  Limited
+                </text>
+                <text x="700" y="450" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#38a169">
+                  High
+                </text>
+                
+                <!-- Deployment Row -->
+                <text x="150" y="480" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#4a5568">
+                  Deployment
+                </text>
+                <text x="300" y="480" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#4a5568">
+                  Desktop/CLI
+                </text>
+                <text x="500" y="480" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#4a5568">
+                  Web Apps
+                </text>
+                <text x="700" y="480" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#4a5568">
+                  Cloud/Enterprise
+                </text>
+                
+                <!-- Use Cases Row -->
+                <text x="150" y="510" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#4a5568">
+                  Best For
+                </text>
+                <text x="300" y="510" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#4a5568">
+                  Sensitive Data
+                </text>
+                <text x="500" y="510" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#4a5568">
+                  Real-time UI
+                </text>
+                <text x="700" y="510" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#4a5568">
+                  Multi-client
+                </text>
+              </g>
+            </svg>
+        </div>
+
+        <h2>SDK Implementation and Development Framework</h2>
+        
+        <p>The Model Context Protocol provides comprehensive Software Development Kits that dramatically simplify the process of building MCP-compatible applications and servers. These SDKs abstract the complexity of protocol implementation while providing developers with powerful, flexible tools for creating sophisticated AI-integrated systems. The primary SDKs available include TypeScript and Python implementations, each designed to leverage the strengths of their respective ecosystems while maintaining full protocol compatibility.</p>
+        
+        <p>The TypeScript SDK excels in web-based environments and Node.js applications, providing seamless integration with modern JavaScript frameworks and web development workflows. This SDK offers native support for web transport mechanisms, making it ideal for browser-based AI applications, real-time dashboards, and web-integrated AI tools. The TypeScript implementation provides strong type safety, ensuring that MCP protocol interactions are validated at compile time, reducing runtime errors and improving development reliability.</p>
+        
+        <p>Python SDK implementation focuses on data science, machine learning, and backend application integration, leveraging Python's extensive ecosystem of AI and data processing libraries. This SDK provides natural integration with popular frameworks including FastAPI, Flask, and Django, enabling rapid development of MCP servers that can integrate with existing Python-based infrastructure. The Python SDK includes specialized support for scientific computing libraries, making it particularly valuable for applications that require complex data analysis or machine learning integration.</p>
+        
+        <p>SDK adoption provides several critical advantages over manual protocol implementation. Developer productivity increases significantly through pre-built protocol handling, automatic message serialization and deserialization, and comprehensive error handling mechanisms. The SDKs include extensive validation frameworks that ensure protocol compliance, reducing the likelihood of integration issues and improving system reliability. Additionally, the SDKs provide built-in security features including input sanitization, connection management, and authentication handling.</p>
         
         <div class="highlight">
-            <p><strong>Technical Innovation:</strong> MCP introduces queryable memory structures that enable AI systems to maintain and access historical context, making decisions based on patterns and relationships that span multiple interactions and timeframes.</p>
+            <p><strong>SDK Benefits:</strong> Using official MCP SDKs reduces development time by approximately 70% compared to manual protocol implementation, while providing guaranteed protocol compatibility and ongoing support for protocol evolution. The SDKs include comprehensive testing frameworks, documentation generators, and debugging tools that accelerate the development process.</p>
         </div>
+        
+        <h2>MCP Core Components: Tools, Resources, and Prompts</h2>
+        
+        <p>The Model Context Protocol establishes its functionality through three fundamental components that work together to create comprehensive AI integration capabilities. These components represent different aspects of how AI systems interact with external environments, each serving specific purposes while contributing to the overall contextual intelligence of the system.</p>
+        
+        <h3>Tools: Executable Functions for Dynamic Interaction</h3>
+        
+        <p>Tools within the MCP framework represent executable functions that AI systems can invoke to perform specific actions or retrieve dynamic information. Unlike static data sources, tools provide active capabilities that can modify system state, execute computations, or interact with external services in real-time. These functions are defined with strict input and output specifications, ensuring predictable behavior while providing AI systems with powerful action capabilities.</p>
+        
+        <p>The tool system operates through a discovery and invocation model where AI clients first query available tools from MCP servers, receive detailed specifications including parameter requirements and return formats, then invoke tools with appropriate arguments based on conversational context. This approach enables AI systems to understand not just what tools are available, but how to use them effectively within specific contexts and workflows.</p>
+        
+        <p>Tool implementations range from simple utility functions that perform calculations or data transformations to complex integration functions that interact with enterprise systems, databases, or external APIs. The flexibility of the tool framework enables developers to expose virtually any programmatic capability to AI systems while maintaining appropriate security boundaries and access controls.</p>
+        
+        <p>Advanced tool implementations support stateful operations where multiple tool invocations can work together to accomplish complex objectives. This capability enables AI systems to perform multi-step processes, maintain working memory across tool calls, and coordinate sophisticated workflows that span multiple systems and data sources.</p>
+        
+        <h3>Resources: Structured Data Access and Context Provision</h3>
+        
+        <p>Resources represent structured data sources that provide AI systems with contextual information necessary for informed decision-making and response generation. Unlike tools that perform actions, resources focus on information retrieval and context provision, enabling AI systems to access relevant data without modifying system state. This read-only access model ensures data integrity while providing comprehensive information access.</p>
+        
+        <p>The resource system supports various data formats and access patterns, from simple text documents and structured JSON data to complex database queries and real-time data streams. Resources are identified through URI-based addressing schemes that enable hierarchical organization and flexible access patterns. This addressing approach allows AI systems to discover and access related resources dynamically based on contextual requirements.</p>
+        
+        <p>Resource implementations often include metadata that helps AI systems understand the relevance, freshness, and reliability of available information. This metadata enables intelligent resource selection where AI systems can choose the most appropriate information sources based on query requirements, data recency, and reliability metrics.</p>
+        
+        <p>Advanced resource capabilities include filtered access where AI systems can request specific subsets of larger data sources, reducing bandwidth requirements and improving response times. Some resources support parameterized access where different arguments can retrieve different views or aspects of the underlying data, providing flexible information access without requiring separate resource definitions.</p>
+        
+        <h3>Prompts: Structured Templates for Consistent Interaction</h3>
+        
+        <p>Prompts within MCP represent pre-built, parameterized templates that guide AI system behavior in specific contexts or domains. These structured templates encapsulate domain expertise, best practices, and consistent interaction patterns, ensuring that AI systems approach similar tasks with appropriate methodology and comprehensive coverage. Prompts bridge the gap between generic AI capabilities and specialized domain knowledge.</p>
+        
+        <p>The prompt system enables organizations to codify their expertise and preferred approaches into reusable templates that maintain consistency across different users and interaction sessions. Rather than relying on users to formulate appropriate requests, prompts provide structured frameworks that ensure comprehensive analysis, appropriate methodology, and consistent output formats.</p>
+        
+        <p>Prompt parameterization allows single templates to be adapted for various specific use cases while maintaining underlying structure and methodology. This flexibility enables organizations to create comprehensive prompt libraries that cover broad functional areas while supporting specific customization requirements. Parameters can include simple values like names or dates, or complex structures like lists of criteria or detailed specifications.</p>
+        
+        <p>Advanced prompt implementations support conditional logic and dynamic content generation based on parameter values and contextual information. This capability enables sophisticated templates that adapt their behavior based on input characteristics, user preferences, or environmental conditions, providing personalized experiences while maintaining structured approaches.</p>
+        
+        <div class="architecture-section">
+            <h3>MCP Component Interaction Flow</h3>
+            <svg viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <marker id="arrow" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                  <polygon points="0 0, 10 3.5, 0 7" fill="#4A90E2" />
+                </marker>
+                <linearGradient id="toolGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                </linearGradient>
+                <linearGradient id="resourceGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#4facfe;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:1" />
+                </linearGradient>
+                <linearGradient id="promptGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#f093fb;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#f5576c;stop-opacity:1" />
+                </linearGradient>
+              </defs>
+              
+              <!-- Background -->
+              <rect width="1000" height="500" fill="#f8fafc"/>
+              
+              <!-- Title -->
+              <text x="500" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#2d3748">
+                MCP Component Interaction and Data Flow
+              </text>
+              
+              <!-- AI Client -->
+              <rect x="400" y="80" width="200" height="80" rx="15" fill="#e2e8f0" stroke="#4A90E2" stroke-width="2"/>
+              <text x="500" y="110" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2d3748">
+                AI Client
+              </text>
+              <text x="500" y="130" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#4a5568">
+                Context-Aware AI System
+              </text>
+              <text x="500" y="145" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#4a5568">
+                (Claude, GPT, etc.)
+              </text>
+              
+              <!-- Tools -->
+              <rect x="50" y="220" width="200" height="120" rx="15" fill="url(#toolGradient)" stroke="#667eea" stroke-width="2"/>
+              <text x="150" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">
+                Tools
+              </text>
+              <text x="150" y="270" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">
+                Executable Functions
+              </text>
+              <text x="70" y="290" font-family="Arial, sans-serif" font-size="11" fill="white">
+                • Database queries
+              </text>
+              <text x="70" y="305" font-family="Arial, sans-serif" font-size="11" fill="white">
+                • API calls
+              </text>
+              <text x="70" y="320" font-family="Arial, sans-serif" font-size="11" fill="white">
+                • Calculations
+              </text>
+              
+              <!-- Resources -->
+              <rect x="400" y="220" width="200" height="120" rx="15" fill="url(#resourceGradient)" stroke="#4facfe" stroke-width="2"/>
+              <text x="500" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">
+                Resources
+              </text>
+              <text x="500" y="270" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">
+                Data Sources
+              </text>
+              <text x="420" y="290" font-family="Arial, sans-serif" font-size="11" fill="white">
+                • Documents
+              </text>
+              <text x="420" y="305" font-family="Arial, sans-serif" font-size="11" fill="white">
+                • File systems
+              </text>
+              <text x="420" y="320" font-family="Arial, sans-serif" font-size="11" fill="white">
+                • Data streams
+              </text>
+              
+              <!-- Prompts -->
+              <rect x="750" y="220" width="200" height="120" rx="15" fill="url(#promptGradient)" stroke="#f093fb" stroke-width="2"/>
+              <text x="850" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">
+                Prompts
+              </text>
+              <text x="850" y="270" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">
+                Structured Templates
+              </text>
+              <text x="770" y="290" font-family="Arial, sans-serif" font-size="11" fill="white">
+                • Analysis frameworks
+              </text>
+              <text x="770" y="305" font-family="Arial, sans-serif" font-size="11" fill="white">
+                • Best practices
+              </text>
+              <text x="770" y="320" font-family="Arial, sans-serif" font-size="11" fill="white">
+                • Domain expertise
+              </text>
+              
+              <!-- Arrows -->
+              <!-- AI to Tools -->
+              <line x1="450" y1="160" x2="200" y2="210" stroke="#4A90E2" stroke-width="2" marker-end="url(#arrow)"/>
+              <text x="290" y="180" font-family="Arial, sans-serif" font-size="11" fill="#4A90E2" font-weight="bold">
+                Execute Actions
+              </text>
+              
+              <!-- Tools to AI -->
+              <line x1="200" y1="240" x2="450" y2="140" stroke="#667eea" stroke-width="2" marker-end="url(#arrow)"/>
+              <text x="290" y="200" font-family="Arial, sans-serif" font-size="11" fill="#667eea" font-weight="bold">
+                Action Results
+              </text>
+              
+              <!-- AI to Resources -->
+              <line x1="500" y1="160" x2="500" y2="210" stroke="#4A90E2" stroke-width="2" marker-end="url(#arrow)"/>
+              <text x="520" y="185" font-family="Arial, sans-serif" font-size="11" fill="#4A90E2" font-weight="bold">
+                Access Data
+              </text>
+              
+              <!-- Resources to AI -->
+              <line x1="480" y1="220" x2="480" y2="170" stroke="#4facfe" stroke-width="2" marker-end="url(#arrow)"/>
+              <text x="430" y="200" font-family="Arial, sans-serif" font-size="11" fill="#4facfe" font-weight="bold">
+                Provide Context
+              </text>
+              
+              <!-- AI to Prompts -->
+              <line x1="550" y1="160" x2="800" y2="210" stroke="#4A90E2" stroke-width="2" marker-end="url(#arrow)"/>
+              <text x="700" y="180" font-family="Arial, sans-serif" font-size="11" fill="#4A90E2" font-weight="bold">
+                Use Templates
+              </text>
+              
+              <!-- Prompts to AI -->
+              <line x1="800" y1="240" x2="550" y2="140" stroke="#f093fb" stroke-width="2" marker-end="url(#arrow)"/>
+              <text x="700" y="200" font-family="Arial, sans-serif" font-size="11" fill="#f093fb" font-weight="bold">
+                Structured Guidance
+              </text>
+              
+              <!-- Flow Steps -->
+              <rect x="50" y="380" width="900" height="80" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+              <text x="500" y="405" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2d3748">
+                Interaction Flow: Discovery → Selection → Execution → Integration
+              </text>
+              <text x="120" y="425" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#4a5568">
+                1. Discover Available Components
+              </text>
+              <text x="360" y="425" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#4a5568">
+                2. Select Appropriate Resources
+              </text>
+              <text x="640" y="425" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#4a5568">
+                3. Execute Tools/Access Data
+              </text>
+              <text x="880" y="425" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#4a5568">
+                4. Integrate into Response
+              </text>
+              
+              <text x="120" y="445" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#718096">
+                List capabilities and specs
+              </text>
+              <text x="360" y="445" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#718096">
+                Choose based on context
+              </text>
+              <text x="640" y="445" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#718096">
         
         <h2>Why MCP Matters in Modern AI Development</h2>
         
