@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building Reliable AI Systems: When and How to Use Large Language Models</title>
+    <style>
+        body {
+            background-color: #FFFFFF;
+            color: #333333;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.8;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #001F54, #002B5B);
+            color: #FFFFFF;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 15px rgba(0, 31, 84, 0.3);
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin: 0;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.2em;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+        
+        h2 {
+            color: #333333;
+            font-size: 1.8em;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-left: 5px solid #002B5B;
+            padding-left: 20px;
+            background: linear-gradient(90deg, rgba(0, 31, 84, 0.1), transparent);
+            padding: 15px 20px;
+        }
+        
+        h3 {
+            color: #333333;
+            font-size: 1.4em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(0, 31, 84, 0.1), rgba(0, 43, 91, 0.05));
+            border: 2px solid #001F54;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: 0 2px 10px rgba(0, 31, 84, 0.2);
+        }
+        
+        .insight-box {
+            background: linear-gradient(135deg, rgba(0, 31, 84, 0.05), rgba(0, 43, 91, 0.1));
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+            border: 1px solid #002B5B;
+        }
+        
+        .key-principle {
+            background-color: rgba(0, 31, 84, 0.1);
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border-left: 3px solid #001F54;
+        }
+        
+        .conclusion {
+            background: #FFFFFF;
+            color: #333333;
+            padding: 30px;
+            border: 2px solid #001F54;
+            border-radius: 10px;
+            margin-top: 40px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 31, 84, 0.3);
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .tech-item {
+            background-color: #001F54;
+            color: #FFFFFF;
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: 1px solid #002B5B;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+        
+        .author-info {
+            background: linear-gradient(135deg, rgba(0, 31, 84, 0.05), rgba(0, 43, 91, 0.1));
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 30px;
+            border: 1px solid #002B5B;
+        }
+        
+        a {
+            color: #002B5B;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .warning-box {
+            background: linear-gradient(135deg, rgba(0, 31, 84, 0.08), rgba(0, 43, 91, 0.03));
+            border: 2px solid #001F54;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: 0 2px 10px rgba(0, 31, 84, 0.15);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Building Reliable AI Systems</h1>
+        <div class="subtitle">A Practical Guide to Using Large Language Models in Production</div>
+    </div>
+
+    <p>As artificial intelligence continues to reshape how we build software, large language models have emerged as powerful tools for solving complex problems. However, their probabilistic nature and impressive capabilities can sometimes lead developers to use them inappropriately, creating systems that are unnecessarily complex, expensive, or unreliable. Understanding when to use LLMs, when to avoid them, and how to structure production systems around them is crucial for building effective AI-powered applications.</p>
+
+    <h2>Understanding Why Models Make Mistakes</h2>
+
+    <p>Before we can effectively use large language models, we need to understand their fundamental limitations. LLMs generate text token by token based on probability distributions learned during training, which means they are not performing logical reasoning in the traditional sense. Instead, they are recognizing and replicating patterns from their training data. This probabilistic nature leads to several categories of errors that every AI developer should understand.</p>
+
+    <div class="highlight-box">
+        <p>Training data limitations represent one of the primary sources of error in LLM systems. These models can only learn patterns from data available during their training period, which means their knowledge has a cutoff date beyond which they cannot reliably provide information. Additionally, if incorrect associations or biases existed in the training data, the model will have learned and may reproduce those same errors. This makes it critical to verify any factual claims generated by an LLM, especially when dealing with time-sensitive information or specialized domains.</p>
+    </div>
+
+    <p>The phenomenon of hallucination occurs when models generate plausible-sounding but factually incorrect outputs. Because LLMs are optimized to produce coherent, confident-sounding text, they can confidently state information that is completely fabricated. This happens because the model confuses memorized patterns with actual reasoning, leading to outputs that sound authoritative but lack factual grounding. In production systems, this can be particularly dangerous because users may trust the confident tone of the response without verifying its accuracy.</p>
+
+    <p>Context window constraints create another category of errors. While modern LLMs can handle increasingly long contexts, they can still lose track of information in extended conversations or misweight the importance of different parts of the provided context. Critical information at the beginning of a long prompt may receive less attention than more recent content, leading to responses that miss important details or constraints.</p>
+
+    <div class="key-principle">
+        <p><strong>Prompt sensitivity</strong> means that small changes in how you phrase a request can dramatically alter the quality and content of the output. The same question asked in slightly different ways may produce vastly different results, making it challenging to create reliable, reproducible systems without careful prompt engineering and testing.</p>
+    </div>
+
+    <h2>When Not to Deploy LLMs</h2>
+
+    <p>Understanding when not to use an LLM is just as important as knowing when to use one. There are several scenarios where traditional software approaches will always outperform large language models in terms of reliability, cost, performance, or regulatory compliance. Recognizing these situations early in system design can save significant development time and prevent production issues.</p>
+
+    <p>Deterministic operations represent the clearest case where LLMs should be avoided. When you need the exact same result every time for identical inputs, such as calculating taxes, processing financial transactions, or running compliance checks, traditional code is the only appropriate solution. LLMs introduce variability that is fundamentally incompatible with operations that require perfect reproducibility. Even with temperature set to zero, LLMs can produce slightly different outputs due to various factors in their generation process.</p>
+
+    <div class="insight-box">
+        <p>Real-time performance requirements at scale often preclude the use of LLMs. For high-frequency operations like trading systems, real-time fraud detection with millisecond latency requirements, or user-facing features that must respond instantly to millions of concurrent users, the API latency and computational cost of LLM inference make them impractical. Traditional software can execute millions of operations per second at a fraction of the cost, while LLM API calls typically take hundreds of milliseconds to seconds and incur per-token charges that accumulate rapidly at scale.</p>
+    </div>
+
+    <p>Critical systems where perfect accuracy is required should not rely solely on LLMs. Medical dosage calculations, financial transaction processing, legal compliance systems, and safety-critical infrastructure need guarantees that LLMs simply cannot provide. While an LLM might generate correct outputs most of the time, the probabilistic nature means there will always be some failure rate, which is unacceptable when errors can lead to severe consequences for health, finances, or safety.</p>
+
+    <p>Simple rule-based logic becomes unnecessarily complicated when implemented with LLMs. If your business logic can be expressed in a few conditional statements or a straightforward decision tree, wrapping that logic in an LLM call adds complexity, cost, latency, and new failure modes without providing any meaningful benefit. Tasks like user authentication, input validation, status checks, and workflow state transitions should use traditional programming constructs that are faster, cheaper, and easier to debug and maintain.</p>
+
+    <div class="warning-box">
+        <p><strong>Regulatory compliance considerations:</strong> Many regulated industries require auditable decision trails and explainable AI systems. The black-box nature of LLMs makes it difficult or impossible to provide the detailed explanations required by regulations in healthcare, finance, and government sectors. Systems subject to regulatory oversight often need to document exactly why a particular decision was made, which is challenging with neural network-based models that operate as complex mathematical transformations rather than explicit rule execution.</p>
+    </div>
+
+    <h2>Choosing Between Data, Rules, and Intelligence</h2>
+
+    <p>The decision between using plain data lookups, rule-based systems, or LLM intelligence should be driven by the nature of the problem you're solving. Traditional approaches excel when logic is fully specifiable and can be written down as clear, unambiguous rules. User authentication flows, input validation requirements, business rule enforcement, and workflow state machines all fall into this category. If you can document your logic in a specification that completely describes all cases and edge conditions, implementing it as code will give you better performance, reliability, and maintainability than attempting to achieve the same result through prompting an LLM.</p>
+
+    <p>Structured data operations represent another clear win for traditional approaches. When you have well-organized data in databases or structured files and know exactly what queries you need to perform, SQL databases, pandas dataframes, or specialized data processing tools will outperform LLMs by orders of magnitude. Database lookups execute in milliseconds, cost virtually nothing per operation, and return exact results. Asking an LLM to query or transform structured data adds unnecessary latency and cost while introducing the risk of errors in interpreting the data or constructing queries.</p>
+
+    <div class="highlight-box">
+        <p>Pattern matching tasks often work better with classical natural language processing or rule-based systems rather than full LLMs. Email filtering using regular expressions, address parsing with known formats, or categorization into a fixed taxonomy can be accomplished reliably with lightweight, fast approaches. These methods execute instantly, have no per-request costs, and can be perfectly tuned to your specific use case without the unpredictability of model inference.</p>
+    </div>
+
+    <p>Cost and latency considerations become particularly important at scale. When processing millions of transactions or handling real-time user interactions where every millisecond and fraction of a cent matters, traditional software provides predictable performance and economics. LLM inference costs accumulate quickly with high-volume operations, and the round-trip time to an API can introduce latency that degrades user experience. A rule-based system that executes in microseconds locally will always outperform a model inference that requires network calls and remote computation.</p>
+
+    <p>Auditability requirements favor explicit rule systems over neural networks. When you need to explain exactly why a decision was made, traditional systems provide clear audit trails showing which rules fired, what data was accessed, and how the final decision was reached. This transparency is essential for debugging, compliance, and building trust with users who need to understand automated decisions affecting them.</p>
+
+    <h2>Strategic Use of RAG, Tools, and Pure LLM Reasoning</h2>
+
+    <p>Modern LLM applications often combine multiple techniques to achieve better results than any single approach alone. Understanding when to use retrieval-augmented generation, function calling with external tools, or pure LLM inference helps you build systems that leverage each component's strengths while mitigating weaknesses.</p>
+
+    <h3>When Retrieval-Augmented Generation Makes Sense</h3>
+
+    <p>Retrieval-augmented generation excels when you need current or domain-specific information beyond what the model learned during training. Documentation search systems, internal knowledge bases, and applications that need to reference recent news or updates all benefit from RAG. Rather than relying solely on the model's parametric knowledge, RAG retrieves relevant information from external sources and includes it in the prompt, allowing the LLM to reference specific, verified information when generating responses.</p>
+
+    <div class="insight-box">
+        <p>RAG is particularly valuable when information updates frequently but doesn't require real-time API access. Product documentation, company policies, research papers, and historical records change over time but don't need instant synchronization. By maintaining a searchable index of this content and retrieving relevant passages during inference, you give the model access to current information without the cost and complexity of real-time data fetching. This approach also helps reduce hallucinations by grounding responses in verifiable sources that can be cited and audited.</p>
+    </div>
+
+    <p>Large corpora of unstructured data represent ideal use cases for RAG. When you have thousands of documents, support tickets, meeting transcripts, or other text that would be impractical to fine-tune on, RAG provides a way to make that information accessible to the model on demand. The retrieval system finds the most relevant content for each query, and the LLM synthesizes that information into coherent responses tailored to the specific question being asked.</p>
+
+    <h3>Function Calling and Tool Integration</h3>
+
+    <p>Tools and function calling shine when you need deterministic operations or real-time data from external systems. The LLM acts as an intelligent orchestrator that decides when to use tools and what parameters to pass, but the actual operations are performed by traditional code that provides reliable, predictable results. This division of labor allows you to leverage the model's reasoning capabilities for decision-making while ensuring critical operations are handled by trustworthy systems.</p>
+
+    <p>Mathematical calculations, database queries, API calls to external services, and state-changing operations should all be implemented as tools rather than asking the LLM to perform them directly. While models have some ability to do arithmetic or generate SQL, they are prone to errors that are eliminated by having them call out to calculators or query builders instead. The model's role becomes deciding which calculation to perform or which data to query, while verified code executes the actual operation.</p>
+
+    <div class="key-principle">
+        <p><strong>Multi-step workflows</strong> benefit tremendously from tool integration. When building systems that need to fetch data from multiple sources, perform transformations, make decisions, and take actions, the LLM can orchestrate the flow by determining which tools to call in what order. This creates flexible, adaptive systems that can handle varied user requests without hard-coding every possible path through the workflow.</p>
+    </div>
+
+    <p>Real-time data requirements necessitate tool integration. Current weather conditions, stock prices, CRM records, inventory levels, and similar dynamic information cannot be provided through the model's training data or static RAG documents. Instead, the model should be given tools that make API calls to authoritative sources, ensuring responses reflect the actual current state of external systems rather than outdated or hallucinated information.</p>
+
+    <h3>Pure LLM Applications</h3>
+
+    <p>Some tasks are best handled by LLMs alone without external augmentation. Creative and open-ended work like writing, brainstorming, translation, and content generation relies on the model's ability to generate novel, coherent text in various styles and formats. These tasks don't have single correct answers and don't require external information beyond what's in the model's training and the user's prompt.</p>
+
+    <p>General reasoning, analysis, and summarization on provided context work well with pure LLM approaches. When the user has already provided all necessary information in their message or uploaded documents, adding RAG or tools would introduce unnecessary complexity. The model can analyze the provided content, draw insights, identify patterns, and present findings without needing to fetch additional information.</p>
+
+    <h3>Combining Approaches for Agentic Systems</h3>
+
+    <p>The most sophisticated AI applications combine multiple techniques into agentic systems that reason, retrieve knowledge, and take actions as needed. These systems use LLM reasoning to understand user intent and decide on appropriate actions, RAG to access relevant information from knowledge bases, and tools to interact with external systems and perform deterministic operations. The LLM serves as the intelligent core that coordinates these capabilities, creating systems that can handle complex, multi-step tasks that adapt to user needs and environmental conditions.</p>
+
+    <div class="highlight-box">
+        <p>Research and analysis applications particularly benefit from this combined approach. A system might use the LLM to break down a research question into sub-questions, RAG to find relevant papers and documentation, web search tools to gather current information, calculation tools to analyze data, and visualization tools to present findings. Each component contributes its strengths while the LLM provides the intelligence to orchestrate them effectively.</p>
+    </div>
+
+    <h2>Production Architecture and Risk Mitigation</h2>
+
+    <p>Building reliable production systems with LLMs requires careful attention to architecture, monitoring, and defensive programming. Unlike traditional software where functions return predictable results, LLM systems must account for variability, potential failures, and unexpected outputs. A well-architected system builds multiple layers of protection to ensure that when things go wrong, they fail safely and visibly.</p>
+
+    <h3>Defense in Depth</h3>
+
+    <p>Input validation forms the first line of defense in production LLM systems. Every piece of user input should be sanitized and validated before reaching the model. Schema validation ensures data has the expected structure, type checking catches mismatched data types, and length limits prevent excessively long inputs that could cause errors or excessive token consumption. Never assume users will provide clean, well-formatted input; always validate and sanitize before processing.</p>
+
+    <p>Output validation is equally critical but often overlooked. Just because an LLM generates text doesn't mean that text is safe to use directly in your application. Parse and validate all LLM outputs before acting on them, especially when the output will drive decisions, be stored in databases, or be displayed to users. Structured output formats like JSON mode help by constraining the model to produce parseable responses, but you should still validate against schemas to ensure all required fields are present and values fall within acceptable ranges.</p>
+
+    <div class="insight-box">
+        <p>Fallback mechanisms provide graceful degradation when LLM calls fail or produce unusable outputs. Every system should have a safe default behavior, whether that's returning cached responses, falling back to simpler rule-based logic, or clearly communicating to the user that the system cannot process their request. Silent failures where the system appears to work but produces incorrect results are far worse than explicit errors that can be logged, debugged, and handled appropriately.</p>
+    </div>
+
+    <h3>Implementing Guardrails</h3>
+
+    <p>Prompt injection protection has become essential as adversarial users attempt to manipulate model behavior through carefully crafted inputs. System messages should clearly define boundaries and acceptable behaviors, but you should also validate user inputs for patterns that might attempt prompt injection, such as instructions to ignore previous instructions or attempts to extract system prompts. For applications with both user-facing and internal operations, consider using separate models or at least separate prompts with different privilege levels to limit the damage from successful injection attacks.</p>
+
+    <p>Content filtering ensures that generated outputs are safe and appropriate before being shown to users. Even well-designed prompts can occasionally produce outputs that violate content policies or are inappropriate for your application. Running outputs through content moderation APIs or custom filters catches problematic content before it reaches users, protecting both your users and your organization from potential harm or liability.</p>
+
+    <div class="key-principle">
+        <p><strong>Rate limiting and cost controls</strong> prevent abuse and runaway expenses. Set reasonable token limits for individual requests to prevent users from consuming excessive resources. Implement request throttling to limit how many requests a single user or session can make in a given time period. Monitor spending and set up alerts when costs exceed expected thresholds, as unexpected usage spikes can quickly become expensive with per-token pricing models.</p>
+    </div>
+
+    <h3>Observability and Monitoring</h3>
+
+    <p>Comprehensive logging is not optional in production LLM systems. Log all prompts sent to the model, all responses received, token usage for cost tracking, latency for performance monitoring, and any errors encountered. You cannot debug what you cannot see, and LLM systems have enough variability that issues will be difficult to reproduce without detailed logs of what actually happened during a problematic request.</p>
+
+    <p>Metrics and alerting help you detect issues before they become critical. Track success rates to know what percentage of requests complete successfully, response quality through evaluation metrics, cost per request to identify expensive queries, and latency to ensure acceptable user experience. Set up alerts for anomalies like sudden drops in success rate, unexpected cost spikes, or increased latency that might indicate problems with your prompts, models, or underlying infrastructure.</p>
+
+    <p>Prompt versioning treats prompts as code because that's essentially what they are in LLM systems. Store prompts in version control, test changes against evaluation sets before deploying, and maintain the ability to roll back to previous prompt versions if new ones introduce problems. Even small wording changes can significantly affect model behavior, so having a clear history and the ability to revert changes is crucial for maintaining system reliability.</p>
+
+    <h3>Testing and Evaluation</h3>
+
+    <p>Evaluation sets form the foundation of quality assurance for LLM systems. Maintain a collection of representative test cases covering typical inputs, edge cases, and adversarial examples. As you discover new failure modes in production, add them to your evaluation set to prevent regressions. These test cases allow you to systematically assess how prompt or model changes affect system behavior before deploying to production.</p>
+
+    <div class="warning-box">
+        <p><strong>Regression testing</strong> should be mandatory for any prompt changes. The non-linear nature of LLM behavior means that a change intended to fix one issue might inadvertently break something else. Running your entire evaluation set against new prompts before deployment catches these issues early, when they're easy to fix rather than after they've affected production users.</p>
+    </div>
+
+    <p>A/B testing allows you to validate changes in production with real users while limiting risk. When modifying prompts or changing models, roll out changes to a small percentage of traffic first. Monitor metrics closely to ensure the changes have the intended effect before expanding to all users. This gradual rollout approach catches issues that might not appear in offline testing while limiting the number of users affected if problems occur.</p>
+
+    <h3>Architectural Patterns for Reliability</h3>
+
+    <p>Agent orchestration using a supervisor pattern creates more maintainable and reliable systems than monolithic prompts. Rather than one giant prompt trying to handle every possible scenario, use a supervisor agent to route requests to specialized agents designed for specific tasks. This modularity makes the system easier to debug, test, and improve since changes to one agent don't affect others. It also allows different agents to use different models optimized for their particular tasks.</p>
+
+    <p>Human-in-the-loop workflows add a crucial safety check for high-stakes decisions. Before executing actions with significant consequences, require human approval. This might mean showing the user what actions the system plans to take and asking for confirmation, or routing high-value decisions through an approval queue for review by specialists. The added latency is worthwhile when errors could be costly or dangerous.</p>
+
+    <div class="insight-box">
+        <p>Caching strategies significantly reduce costs and improve latency for common queries. Many LLM applications have common patterns or frequently asked questions that don't require fresh model inference each time. Cache responses to identical or very similar queries and serve them directly when appropriate. Implement cache invalidation strategies to refresh cached content when underlying data changes or time passes, ensuring users don't receive stale information while still benefiting from reduced latency and cost.</p>
+    </div>
+
+    <p>Asynchronous processing improves user experience and system reliability for non-time-sensitive tasks. Rather than making users wait for potentially slow LLM inference, accept their request immediately and process it in the background using a job queue. This allows you to implement sophisticated retry logic, gracefully handle timeouts, and prioritize requests without impacting user-facing latency. Users receive immediate confirmation that their request was received, then get notified when processing completes.</p>
+
+    <p>Separation of concerns keeps LLM reasoning distinct from execution. The LLM should decide what needs to be done, but traditional code should do it. This architectural principle makes failures easier to debug because you can determine whether problems stem from incorrect decisions by the LLM or incorrect execution by your code. It also reduces the blast radius of failures since deterministic code components can't produce unpredictable results even if the LLM makes poor decisions.</p>
+
+    <h3>Multi-Agent System Considerations</h3>
+
+    <p>State management becomes critical in systems with multiple interacting agents. Use proper state machines to track what each agent has accomplished and prevent circular dependencies where agents trigger each other indefinitely. Clear state tracking also prevents duplicate work and ensures that all required tasks are completed before declaring a workflow finished. Modern frameworks provide state management primitives specifically designed for agent systems, and leveraging these tools prevents many common pitfalls.</p>
+
+    <p>Tool reliability matters more in agent systems than single-agent applications because agents may depend on tool results to make subsequent decisions. Implement retries with exponential backoff for transient failures, and provide fallback options when tools consistently fail. An agent system that calls a web search API should gracefully handle cases where the API is unavailable rather than failing the entire workflow because one component is down.</p>
+
+    <div class="highlight-box">
+        <p>Data isolation protects customer privacy and prevents cross-contamination in multi-tenant systems. Keep customer data encrypted and segregated so that one customer's context never leaks into another's session. This is particularly important in agent systems where context can accumulate over multiple steps and the complexity makes it easier for data to inadvertently cross boundaries if isolation is not carefully maintained.</p>
+    </div>
+
+    <p>Prompt versioning becomes more complex but more important in multi-agent systems. When you have many specialized agents, you're managing many distinct prompts that must work together correctly. Version control all of them, test them together as a system, and maintain the ability to roll back the entire system if changes to one agent break interactions with others. The interactions between agents often produce emergent behaviors that aren't obvious from testing each agent in isolation.</p>
+
+    <p>Output validation before generating final deliverables prevents incomplete or malformed results from reaching users. In systems that generate reports or other artifacts, validate that all required sections were created, data looks reasonable, and formatting is correct before presenting to users. If validation fails, the system should either retry the generation or fail gracefully with a clear error rather than presenting broken output.</p>
+
+    <div class="conclusion">
+        <h2>The Guiding Principle</h2>
+        <p>Large language models should serve as decision-makers and synthesizers in your architecture, not the entire system. They excel at understanding intent, reasoning about problems, and generating natural language, but they should be wrapped in traditional software engineering practices: input and output validation, comprehensive monitoring, systematic testing, and graceful degradation. By combining LLM intelligence with deterministic code, external tools, and knowledge retrieval, you can build systems that leverage the strengths of each component while mitigating their weaknesses. The key to production-ready AI systems lies not in using the most advanced models or the cleverest prompts, but in thoughtful architecture that makes failures visible, containable, and recoverable.</p>
+    </div>
+
+    <div class="author-info">
+        <h3>About Building AI Systems</h3>
+        <p>This guide reflects practical lessons learned from building production AI applications across various domains including financial analysis, business intelligence, and automated decision systems. The principles outlined here represent hard-won insights from deploying LLM-powered systems that handle real user data and make consequential decisions. As the field continues to evolve, these fundamental principles of reliability, observability, and defensive design remain constant regardless of which models or frameworks you choose to use.</p>
+    </div>
+
+    <div class="tech-stack">
+        <div class="tech-item">LangChain</div>
+        <div class="tech-item">LangGraph</div>
+        <div class="tech-item">OpenAI API</div>
+        <div class="tech-item">Python</div>
+        <div class="tech-item">Production Architecture</div>
+        <div class="tech-item">Agent Orchestration</div>
+    </div>
+
+</body>
+</html>
