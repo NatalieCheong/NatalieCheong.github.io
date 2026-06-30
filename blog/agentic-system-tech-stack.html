@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Agentic System Tech Stack Explained: A Layer-by-Layer Breakdown</title>
+    <style>
+        body {
+            background-color: #FFFFFF;
+            color: #333333;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.8;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #001F54, #002B5B);
+            color: #FFFFFF;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 15px rgba(0, 31, 84, 0.3);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin: 0;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+        h2 {
+            color: #333333;
+            font-size: 1.8em;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-left: 5px solid #002B5B;
+            padding: 15px 20px;
+            background: linear-gradient(90deg, rgba(0, 31, 84, 0.1), transparent);
+        }
+
+        h3 {
+            color: #333333;
+            font-size: 1.4em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(0, 31, 84, 0.1), rgba(0, 43, 91, 0.05));
+            border: 2px solid #001F54;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: 0 2px 10px rgba(0, 31, 84, 0.2);
+        }
+
+        a {
+            color: #002B5B;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Layer section heading with numbered badge */
+        .layer-heading {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-top: 45px;
+            margin-bottom: 10px;
+            border-left: 5px solid #002B5B;
+            padding: 15px 20px;
+            background: linear-gradient(90deg, rgba(0, 31, 84, 0.1), transparent);
+        }
+
+        .layer-badge {
+            flex: 0 0 auto;
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #001F54, #002B5B);
+            color: #FFFFFF;
+            font-size: 1.6em;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0, 31, 84, 0.35);
+        }
+
+        .layer-title {
+            color: #001F54;
+            font-size: 1.6em;
+            font-weight: bold;
+        }
+
+        /* Two brand example cards per layer */
+        .examples {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0 10px 0;
+        }
+
+        .brand-example {
+            background: linear-gradient(135deg, rgba(0, 31, 84, 0.05), rgba(0, 43, 91, 0.1));
+            border: 1px solid #002B5B;
+            border-left: 4px solid #001F54;
+            border-radius: 8px;
+            padding: 18px 22px;
+        }
+
+        .brand-example h4 {
+            margin: 0 0 8px 0;
+            color: #001F54;
+            font-size: 1.15em;
+        }
+
+        .brand-example p {
+            margin: 0;
+            font-size: 0.97em;
+        }
+
+        @media (max-width: 640px) {
+            .examples { grid-template-columns: 1fr; }
+        }
+
+        /* Mermaid diagram container */
+        .diagram-box {
+            background: #FFFFFF;
+            border: 2px solid #001F54;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 31, 84, 0.15);
+        }
+
+        .diagram-caption {
+            color: #555555;
+            font-style: italic;
+            font-size: 0.95em;
+            margin-top: 15px;
+        }
+
+        .conclusion {
+            background: #FFFFFF;
+            color: #333333;
+            padding: 30px;
+            border: 2px solid #001F54;
+            border-radius: 10px;
+            margin-top: 40px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 31, 84, 0.3);
+        }
+
+        .author-info {
+            background: linear-gradient(135deg, rgba(0, 31, 84, 0.05), rgba(0, 43, 91, 0.1));
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 30px;
+            border: 1px solid #002B5B;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>The Agentic System Tech Stack Explained</h1>
+        <div class="subtitle">A Layer-by-Layer Breakdown of the Components That Power Modern AI Agents</div>
+    </div>
+
+    <h2>Introduction</h2>
+
+    <p>Building a single chatbot is easy. Building an agentic system that can reason about a goal, call the right tools, remember what it has learned, and run reliably in production is a different discipline altogether. Behind every capable AI agent sits a layered stack of technologies, each solving a distinct problem, and each chosen deliberately so the layers above and below it can do their jobs well.</p>
+
+    <p>This post walks through that stack one layer at a time. For each layer you will find what it actually does, why it matters, and two well-known tools you can reach for when you build with it. Whether you call it an AI agent stack or an agentic system stack, the architecture is the same: seven layers that together turn a language model into an autonomous system capable of solving complex problems and delivering real business value.</p>
+
+    <div class="diagram-box">
+        <pre class="mermaid">
+flowchart TB
+    L1["1 &#183; Models<br/>reasoning &amp; generation"]:::layer
+    L2["2 &#183; Orchestration Frameworks<br/>agent logic &amp; tool use"]:::layer
+    L3["3 &#183; Memory Systems<br/>context &amp; long-term knowledge"]:::layer
+    L4["4 &#183; Vector Databases<br/>embeddings &amp; RAG"]:::layer
+    L5["5 &#183; Observability<br/>trace &amp; monitor"]:::layer
+    L6["6 &#183; Evaluation<br/>quality &amp; safety"]:::layer
+    L7["7 &#183; Deployment Infrastructure<br/>scale &amp; run in production"]:::layer
+
+    L1 --> L2 --> L3 --> L4 --> L5 --> L6 --> L7
+
+    L7 --> GOAL(["Autonomously solve complex problems<br/>and deliver real business value"]):::goal
+
+    classDef layer fill:#001F54,stroke:#002B5B,stroke-width:2px,color:#FFFFFF;
+    classDef goal fill:#FFFFFF,stroke:#001F54,stroke-width:2px,color:#001F54;
+        </pre>
+        <div class="diagram-caption">The seven layers of the agentic system tech stack, from the foundation model up to production deployment.</div>
+    </div>
+
+    <div class="layer-heading">
+        <div class="layer-badge">1</div>
+        <div class="layer-title">Models</div>
+    </div>
+
+    <p>The model layer is the foundation. These are the foundation and frontier models that supply the raw reasoning, planning, and generation capability your agent depends on. Everything else in the stack exists to direct, extend, and constrain what happens inside this layer. The model decides how to break a goal into steps, when to call a tool, and how to phrase the final response, so the quality of your agent is bounded by the quality of the model you choose.</p>
+
+    <p>Choosing a model means trading off reasoning strength, speed, cost, and context window against your use case. Many production systems route different tasks to different models, using a stronger model for planning and a cheaper, faster one for routine sub-tasks.</p>
+
+    <div class="examples">
+        <div class="brand-example">
+            <h4>Anthropic (Claude)</h4>
+            <p>A family of frontier models known for strong reasoning and long-context performance, widely used for agentic planning and tool-use workflows.</p>
+        </div>
+        <div class="brand-example">
+            <h4>OpenAI (GPT)</h4>
+            <p>The GPT model family, a popular default for general-purpose generation, function calling, and rapid prototyping of agent behavior.</p>
+        </div>
+    </div>
+
+    <div class="layer-heading">
+        <div class="layer-badge">2</div>
+        <div class="layer-title">Orchestration Frameworks</div>
+    </div>
+
+    <p>A raw model only produces text. The orchestration layer is what turns that text into action. These frameworks manage agent logic, tool use, and multi-step workflows, deciding the control flow that connects a user request to one or more model calls, tool invocations, and intermediate decisions. They handle the loop of plan, act, observe, and repeat that defines agentic behavior.</p>
+
+    <p>Good orchestration also handles the unglamorous parts: parsing tool arguments, retrying failed calls, passing state between steps, and routing work to the right sub-agent. This is where most of your engineering effort lives, because it is where the agent's actual behavior is defined.</p>
+
+    <div class="examples">
+        <div class="brand-example">
+            <h4>LangChain</h4>
+            <p>A widely adopted framework for chaining model calls, tools, and prompts, with graph-based extensions for building stateful multi-agent workflows.</p>
+        </div>
+        <div class="brand-example">
+            <h4>CrewAI</h4>
+            <p>A framework focused on role-based multi-agent teams, letting you define specialized agents that collaborate on a shared task.</p>
+        </div>
+    </div>
+
+    <div class="layer-heading">
+        <div class="layer-badge">3</div>
+        <div class="layer-title">Memory Systems</div>
+    </div>
+
+    <p>Models are stateless by default, forgetting everything the moment a request ends. The memory layer stores and manages context, conversations, and long-term knowledge so an agent can carry information across turns and across sessions. This is what lets an agent remember a user's preferences from last week, recall the result of a tool call from earlier in the same workflow, or build up knowledge over time rather than starting from zero each run.</p>
+
+    <p>Memory systems typically distinguish between short-term working memory that fits inside the model's context window and long-term memory that is persisted externally and retrieved when relevant. Designing this layer well is one of the biggest levers for making an agent feel coherent and personalized.</p>
+
+    <div class="examples">
+        <div class="brand-example">
+            <h4>LangGraph Memory</h4>
+            <p>A persistence layer for LangGraph agents that checkpoints state and stores short- and long-term memory across turns and sessions.</p>
+        </div>
+        <div class="brand-example">
+            <h4>Redis</h4>
+            <p>A fast in-memory data store often used to hold session state, recent context, and cached results for low-latency agent memory.</p>
+        </div>
+    </div>
+
+    <div class="layer-heading">
+        <div class="layer-badge">4</div>
+        <div class="layer-title">Vector Databases</div>
+    </div>
+
+    <p>When an agent needs to search over documents, knowledge bases, or past interactions by meaning rather than exact keywords, it relies on the vector database layer. These systems store and retrieve vector embeddings for semantic search and retrieval-augmented generation, or RAG. Text is converted into numerical embeddings, and the database finds the entries whose meaning is closest to a query, giving the agent relevant context to ground its answers in real data.</p>
+
+    <p>This layer is what keeps an agent's responses factual and current. Instead of relying only on what the model learned during training, a RAG-enabled agent can pull in your own documents at query time, which reduces hallucination and lets you update knowledge without retraining anything.</p>
+
+    <div class="examples">
+        <div class="brand-example">
+            <h4>Pinecone</h4>
+            <p>A fully managed vector database designed for fast, scalable semantic search and production-grade RAG pipelines.</p>
+        </div>
+        <div class="brand-example">
+            <h4>Chroma</h4>
+            <p>An open-source, developer-friendly vector store that is easy to embed in applications and popular for prototyping retrieval workflows.</p>
+        </div>
+    </div>
+
+    <div class="layer-heading">
+        <div class="layer-badge">5</div>
+        <div class="layer-title">Observability</div>
+    </div>
+
+    <p>Agents make many non-deterministic decisions, which makes them hard to debug when something goes wrong. The observability layer lets you monitor, trace, and debug agent behavior, performance, and costs in real time. It captures the full trace of a run, every prompt, model response, tool call, and latency measurement, so you can see exactly why an agent did what it did instead of guessing.</p>
+
+    <p>Beyond debugging, observability is how you keep costs and latency under control in production. Token usage adds up quickly across multi-step agent runs, and being able to see which steps are slow or expensive is essential for optimizing a system that real users depend on.</p>
+
+    <div class="examples">
+        <div class="brand-example">
+            <h4>LangSmith</h4>
+            <p>A tracing and monitoring platform that records every step of an agent run, making it straightforward to inspect, debug, and analyze behavior.</p>
+        </div>
+        <div class="brand-example">
+            <h4>Arize</h4>
+            <p>An observability platform for ML and LLM applications, offering tracing, monitoring, and drift detection for production agents.</p>
+        </div>
+    </div>
+
+    <div class="layer-heading">
+        <div class="layer-badge">6</div>
+        <div class="layer-title">Evaluation</div>
+    </div>
+
+    <p>Knowing what an agent did is not the same as knowing whether it did it well. The evaluation layer measures agent outputs for quality, safety, correctness, and alignment. It turns subjective judgments about output quality into repeatable tests, using golden datasets, rule-based checks, and LLM-as-judge scoring so you can catch regressions before they reach users.</p>
+
+    <p>Evaluation is what lets you change a prompt, swap a model, or refactor a workflow with confidence. Without it, every change is a gamble; with it, you can prove that a new version is genuinely better against a fixed set of cases rather than just feeling like it is.</p>
+
+    <div class="examples">
+        <div class="brand-example">
+            <h4>Ragas</h4>
+            <p>An open-source framework specialized in evaluating RAG pipelines, scoring metrics like faithfulness, answer relevance, and context precision.</p>
+        </div>
+        <div class="brand-example">
+            <h4>DeepEval</h4>
+            <p>An evaluation framework that brings unit-test-style assertions to LLM outputs, with built-in metrics for correctness and hallucination.</p>
+        </div>
+    </div>
+
+    <div class="layer-heading">
+        <div class="layer-badge">7</div>
+        <div class="layer-title">Deployment Infrastructure</div>
+    </div>
+
+    <p>Finally, all of the above has to run somewhere reliable. The deployment infrastructure layer is what you use to deploy, scale, and manage agents in production environments. It handles packaging your application, serving it behind APIs, scaling it to meet demand, and keeping it available when load spikes or components fail. This is the layer that turns a working prototype into a service real users can depend on around the clock.</p>
+
+    <p>Modern agent deployments lean heavily on containerization and cloud platforms so that the same system can run identically in development and production, scale horizontally, and recover automatically from failures. Getting this layer right is what separates a demo from a dependable product.</p>
+
+    <div class="examples">
+        <div class="brand-example">
+            <h4>Docker</h4>
+            <p>A containerization platform that packages an agent and its dependencies into a portable image that runs identically everywhere.</p>
+        </div>
+        <div class="brand-example">
+            <h4>Amazon Web Services (AWS)</h4>
+            <p>A comprehensive cloud platform providing compute, networking, and managed services to host and scale agentic systems in production.</p>
+        </div>
+    </div>
+
+    <div class="highlight-box">
+        <h3>How the Layers Work Together</h3>
+        <p>It helps to read the stack as a single flow. A request enters the system and the <strong>model</strong> reasons about it. The <strong>orchestration framework</strong> turns that reasoning into concrete steps, calling tools and sub-agents. Along the way the agent reads and writes to its <strong>memory</strong> and retrieves grounding context from <strong>vector databases</strong>. Every step is captured by <strong>observability</strong> and scored by <strong>evaluation</strong>, while the whole system runs on <strong>deployment infrastructure</strong> that keeps it reliable at scale. No layer is optional once you move past a toy demo; each one earns its place.</p>
+    </div>
+
+    <div class="conclusion">
+        <h3>Key Takeaways</h3>
+        <p>The agentic system tech stack is best understood as seven cooperating layers: <strong>models</strong> for reasoning, <strong>orchestration frameworks</strong> for control flow, <strong>memory systems</strong> for continuity, <strong>vector databases</strong> for grounded retrieval, <strong>observability</strong> for visibility, <strong>evaluation</strong> for quality, and <strong>deployment infrastructure</strong> for reliable production operation.</p>
+        <p>You do not need every brand-name tool on day one. The discipline is in recognizing which layer a problem belongs to and choosing the right tool for that layer, so that as your agent grows from prototype to product, each layer can be strengthened independently without rewriting the rest. Master the layers, and you master the system.</p>
+    </div>
+
+    <div class="author-info">
+        <h3><span class="emoji">👩‍💻</span> About the Author</h3>
+        <p><strong>Natalie Cheong</strong> is a passionate AI developer building finance agentic systems for business and exploring the intersection of artificial intelligence, multi-agent systems, and AI safety.</p>
+        <p>Connect with me on <a href="https://www.linkedin.com/in/natalie-insybell">LinkedIn</a></p>
+    </div>
+
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                fontFamily: 'Georgia, "Times New Roman", serif',
+                primaryColor: '#001F54',
+                primaryTextColor: '#FFFFFF',
+                primaryBorderColor: '#002B5B',
+                lineColor: '#002B5B',
+                secondaryColor: '#002B5B',
+                tertiaryColor: '#FFFFFF'
+            }
+        });
+    </script>
+</body>
+</html>
